@@ -18,7 +18,7 @@ const italiana = Italiana({
 
 
 export const metadata: Metadata = {
-  title: "Serapat Ratanapachai — Portfolio",
+  title: "Serapat Ratanapachai Portfolio",
   description: "Full-Stack Developer Portfolio",
   icons: {
     icon: '/logo.png',
