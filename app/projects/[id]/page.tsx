@@ -231,9 +231,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         )}
 
       </div>
-      <div className="bg-red-500 sm:bg-blue-500 md:bg-green-500 lg:bg-yellow-500">
-  กล่องเปลี่ยนสี
-</div>
+      
     </main>
   );
 }

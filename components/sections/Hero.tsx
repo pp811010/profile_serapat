@@ -5,7 +5,7 @@ export default function Hero() {
 
 
   return (
-    <section className="hero-section pt-25 pb-24 px-6 lg:px-8 relative z-10">
+    <section className="hero-section pt-25 lg:pt-10 pb-24 lg:pb-12 px-6 lg:px-8 relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center gap-12 lg:gap-5 ">
           <div>
@@ -17,7 +17,7 @@ export default function Hero() {
               className="rounded-full w-[250px] h-[250px]  object-cover shrink-0"
             />
           </div>
-          <div className="text-center max-w-4xl mx-auto lg:mb-5 mt-5 lg:mb-16 ">
+          <div className="text-center max-w-4xl mx-auto lg:mb-5 mt-5 ">
             <h1 className="text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight mb-6">
               Software Developer & Full-Stack
             </h1>

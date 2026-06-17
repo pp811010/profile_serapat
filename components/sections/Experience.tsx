@@ -5,7 +5,7 @@ const techs = [
 ];
 export default function Experience() {
     return (
-        <section id="experience" className="bg-white  lg:py-24 px-6 lg:px-8">
+        <section id="experience" className="bg-white lg:py-10 px-6 lg:px-8">
             <div className="max-w-6xl mx-auto pt-20 lg:pt-0">
                 <div className="flex flex-col lg:items-center gap-4 mb-6">
                     <h2 className="text-black font-medium text-3xl lg:text-4xl"> Work Experience</h2>
