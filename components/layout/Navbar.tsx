@@ -67,7 +67,7 @@ export default function Navbar() {
                 className="flex items-center gap-2 focus:outline-none p-1 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
               >
                 <Image
-                  src="/s__14303244.jpg"
+                  src="/profile2.jpg"
                   alt="Profile"
                   width={32}
                   height={32}
