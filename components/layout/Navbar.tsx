@@ -89,7 +89,7 @@ export default function Navbar() {
                 <div className="bg-white p-4 border-b border-gray-200">
                   <div className="flex items-center gap-3">
                     <Image
-                      src="/s__14303244.jpg"
+                      src="/profile2.jpg"
                       alt="Profile"
                       width={48}
                       height={48}

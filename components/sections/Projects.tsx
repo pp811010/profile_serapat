@@ -198,7 +198,7 @@ export default function Projects() {
                     <div className="flex items-center justify-between pt-4 border-t border-gray-200">
                       <div className="flex items-center gap-2">
                         <Image
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=40&h=40&q=80"
+                          src="/profile2.jpg"
                           alt="Author"
                           width={32}
                           height={32}
