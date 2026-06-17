@@ -2,29 +2,40 @@
 import Image from "next/image";
 
 export default function Hero() {
-  
+
 
   return (
-    <section className="hero-section pt-30 pb-24 px-6 lg:px-8 relative z-10">
+    <section className="hero-section pt-25 pb-24 px-6 lg:px-8 relative z-10">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-4xl mx-auto mb-5 lg:mb-16">
-          <h1 className="text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight mb-6">
-            Software Developer & Full-Stack
-          </h1>
+        <div className="flex flex-col items-center gap-12 ">
+          <div>
+            <Image
+              src="/profile2.jpg"
+              width={200}
+              height={200}
+              alt="profile"
+              className="rounded-full w-[250px] h-[250px]  object-cover shrink-0"
+            />
+          </div>
+          <div className="text-center max-w-4xl mx-auto lg:mb-5 lg:mb-16">
+            <h1 className="text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight mb-6">
+              Software Developer & Full-Stack
+            </h1>
 
-          <p className="text-xl text-gray-600 leading-relaxed mb-10">
-            <span className="text-blue-600 font-medium">
-              Serapat Ratanapachai{'\''}s
-            </span>
-            {" "}Portfolio
-          </p>
+            <p className="text-xl text-gray-600 leading-relaxed mb-10">
+              <span className="text-blue-600 font-medium">
+                Serapat Ratanapachai{'\''}s
+              </span>
+              {" "}Portfolio
+            </p>
 
-         
+
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-12 items-start">
 
-          <div className="space-y-6">
+          <div>
             {/* Card 1 */}
             <div className="feature-card">
               <div className="flex items-start gap-4 ">
@@ -34,7 +45,7 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                
+
                   <p className="text-gray-600 leading-relaxed">
                     Building high-performance APIs and business systems using Go, FastAPI, PostgreSQL, and modern software architecture.
                   </p>
