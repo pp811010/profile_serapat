@@ -36,7 +36,7 @@ export default function Experience() {
                                 </div>
                             </div>
                         </div>
-                        <div className="lg:col-span-3 h-full rounded-tr-xl rounded-br-xl bg-gradient-to-br from-[#6bfbce] via-[#00d4ef] to-[#9d35e3] p-10 flex items-center justify-center">
+                        <div className="lg:col-span-3 h-full rounded-tr-xl rounded-br-xl bg-gradient-to-br from-[#1ec198] via-[#00d4ef] to-[#2563eb] p-10 flex items-center justify-center">
                             <Image
                                 src="/internship_hero2.jpg"
                                 alt=""
