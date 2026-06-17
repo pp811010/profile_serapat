@@ -20,7 +20,7 @@ const projectsData = [
       "Cohere Reranker",
       "Embedded Model",
     ],
-    image: "/Projects/chatdio/Home.jpg",
+    image: "/projects/chatdio/Home.jpg",
     role: "Full-Stack Dev",
   },
   {
@@ -37,7 +37,7 @@ const projectsData = [
       "AWS VPC",
       "Elastic Load Balancer (ELB)",
     ],
-    image: "/Projects/filmfolio/hero.jpg",
+    image: "/projects/filmfolio/hero.jpg",
     role: "Frontend Developer",
   },
   {
@@ -54,7 +54,7 @@ const projectsData = [
       "CoinGecko API",
       "Stripe API",
     ],
-    image: "/Projects/bitx/hero.png",
+    image: "/projects/bitx/hero.png",
     role: "Full-Stack Dev",
   },
   {
@@ -72,7 +72,7 @@ const projectsData = [
       "Spotify API",
       "Deezer API",
     ],
-    image: "/Projects/mumood/hero.jpg",
+    image: "/projects/mumood/hero.jpg",
     role: "Full-Stack Dev",
   },
   {
@@ -90,7 +90,7 @@ const projectsData = [
       "AWS WAF",
       "GitHub Actions",
     ],
-    image: "/Projects/expert-connect/hero.jpg",
+    image: "/projects/expert-connect/hero.jpg",
     role: "Full-Stack Dev",
   },
   {
@@ -116,7 +116,7 @@ const projectsData = [
       "PHP",
       "SQLite",
     ],
-    image: "/Projects/omakase/hero.jpg",
+    image: "/projects/omakase/hero.jpg",
     role: "Full-Stack Dev",
   },
 ];
