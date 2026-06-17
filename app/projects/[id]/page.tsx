@@ -207,7 +207,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <h3 className="text-lg font-bold text-gray-900 mb-6">Application</h3>
             <div className={`grid ${gridColsClass} gap-6`}>
               {project.screenshots.slice(0, project.screenshotCount).map((screen, index) => (
-                <div key={index} className="overflow-hidden bg-chip group">
+                <div key={index} className="overflow-hidden group">
                   <div className={`relative w-full ${isMobile
                       ? "aspect-[9/16]" 
                       : "aspect-video"
@@ -231,6 +231,9 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
         )}
 
       </div>
+      <div className="bg-red-500 sm:bg-blue-500 md:bg-green-500 lg:bg-yellow-500">
+  กล่องเปลี่ยนสี
+</div>
     </main>
   );
 }

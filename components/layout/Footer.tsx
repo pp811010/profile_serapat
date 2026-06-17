@@ -6,20 +6,50 @@ export default function Footer() {
           
           {/* Copyright */}
           <div className="flex items-center gap-3">
-            <span className="text-sm text-google-gray">
+            <span className="text-sm text-white">
               © 2026 Serapat Ratanapachai. All rights reserved.
             </span>
           </div>
 
+        <div className="flex flex-row md:flex-row items-center gap-6">
+           {/* Contact Info - Email & Phone */}
+          <div className="flex flex-row sm:flex-row items-center gap-4">
+            {/* Email */}
+            <a
+              href="mailto:serapat@example.com"
+              className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              aria-label="Email"
+            >
+              <div className="w-8 h-8 rounded-full bg-white hover:bg-gray-200 flex items-center justify-center transition-colors">
+                <svg className="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <span className="hidden sm:inline">serapat.rata@gmail.com</span>
+            </a>
+
+            {/* Phone */}
+            <a
+              href="tel:+66812345678"
+              className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+              aria-label="Phone"
+            >
+              <div className="w-8 h-8 rounded-full bg-white hover:bg-gray-200 flex items-center justify-center transition-colors">
+                <svg className="w-4 h-4 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </div>
+              <span className="hidden sm:inline">+66 902327959</span>
+            </a>
+          </div>
+
           {/* Social Links */}
           <div className="flex items-center gap-4">
-
-            {/* GitHub */}
             <a
               href="https://github.com/pp811010"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-gray-700 hover:bg-gray-200 flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full bg-white hover:bg-gray-200 flex items-center justify-center transition-colors"
               aria-label="GitHub"
             >
               <svg className="w-4 h-4 text-google-gray" fill="currentColor" viewBox="0 0 24 24">
@@ -27,6 +57,7 @@ export default function Footer() {
               </svg>
             </a>
           </div>
+        </div>
         </div>
       </div>
     </footer>

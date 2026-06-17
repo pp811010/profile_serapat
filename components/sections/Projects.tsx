@@ -134,7 +134,7 @@ const filterOptions = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-white py-24 px-6 lg:px-8 relative z-10">
+    <section id="projects" className="bg-white py-20 lg:py-24 px-6 lg:px-8  relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex  flex-col lg:items-center">
           <div className="flex items-center gap-4 mb-6">

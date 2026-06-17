@@ -5,8 +5,8 @@ const techs = [
 ];
 export default function Experience() {
     return (
-        <section id="experience" className="bg-white py-24 px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto">
+        <section id="experience" className="bg-white  lg:py-24 px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto pt-20 lg:pt-0">
                 <div className="flex flex-col lg:items-center gap-4 mb-6">
                     <h2 className="text-black font-medium text-3xl lg:text-4xl"> Work Experience</h2>
                     <p className="text-gray-500  text-lg lg:text-xl mb-6">A collection of work experiences throughout my professional journey.</p>
@@ -21,13 +21,13 @@ export default function Experience() {
                                 <p className="text-gray-600 text-md lg:text-xl mb-3">Datapro Computer Systems Co., Ltd</p>
                                 <ul className="text-gray-600 text-sm mb-8">
 
-                                    <li className="flex items-center gap-2">
+                                    <li className="flex  items-start gap-2 text-base leading-relaxed">
 
-                                        <span className="text-accent mt-0.5">●</span>
-                                        Transform ระบบประกันภัย TPA จากสถาปัตยกรรม Legacy สู่ Modern Full-Stack
+                                        <span className="text-accent text-xl mt-0.5 ">●</span>
+                                        Transform ระบบประกันภัย TPA จากสถาปัตยกรรม Legacy สู่ Modern Full-Stack Next.js และ Golang (Gin Framework)
                                     </li>
                                 </ul>
-                                <div className="flex flex-wrap gap-1">
+                                <div className="flex flex-wrap gap-1 ml-4">
                                     {techs.map((tech, index) => (
                                         <span key={index} className="text-white bg-gray-800 text-sm px-2 py-1 rounded-lg">
                                             {tech}
@@ -36,7 +36,7 @@ export default function Experience() {
                                 </div>
                             </div>
                         </div>
-                        <div className="lg:col-span-3 h-full rounded-tr-xl rounded-br-xl bg-gradient-to-br from-[#6BA3D6] via-[#B8A0C9] to-[#E0B8B8] p-10 flex items-center justify-center">
+                        <div className="lg:col-span-3 h-full rounded-tr-xl rounded-br-xl bg-gradient-to-br from-[#8059ff] via-[#0f172a] to-black p-10 flex items-center justify-center">
                             <Image
                                 src="/internship_hero2.jpg"
                                 alt=""

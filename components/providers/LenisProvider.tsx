@@ -1,13 +1,11 @@
 "use client";
-
-import { useEffect, ReactNode, useRef } from "react";
-import Lenis from "lenis";
+import { useEffect, useRef, ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import Lenis from "lenis";
 
 export default function LenisProvider({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
-  const previousPathRef = useRef<string>("");
+  const pathname = usePathname();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -22,48 +20,19 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
       lenis.raf(time);
       requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
+    const rafId = requestAnimationFrame(raf);
 
     return () => {
+      cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
+  // Reset scroll to top whenever the route actually changes
   useEffect(() => {
-    // เก็บ scroll position ก่อนเปลี่ยนหน้า (เฉพาะหน้า home)
-    if (previousPathRef.current === "/" && lenisRef.current) {
-      const scrollPosition = lenisRef.current.scroll;
-      sessionStorage.setItem("homeScrollPosition", scrollPosition.toString());
-    }
-
-    // ตรวจสอบว่ากำลังไปหน้า detail หรือไม่
-    const isGoingToDetail = pathname.startsWith("/projects/") && pathname !== "/projects/";
-    const isComingFromDetail = previousPathRef.current.startsWith("/projects/") && pathname === "/";
-
-    if (isGoingToDetail) {
-      // เข้า detail → scroll ขึ้นบนสุด
-      requestAnimationFrame(() => {
-        if (lenisRef.current) {
-          lenisRef.current.scrollTo(0, {
-            duration: 0,
-            force: true,
-          });
-        }
-      });
-    } else if (isComingFromDetail) {
-      // กลับ home → restore scroll position
-      const savedPosition = sessionStorage.getItem("homeScrollPosition");
-      if (savedPosition && lenisRef.current) {
-        setTimeout(() => {
-          lenisRef.current?.scrollTo(parseFloat(savedPosition), {
-            duration: 0,
-            force: true,
-          });
-        }, 100);
-      }
-    }
-
-    previousPathRef.current = pathname;
+    lenisRef.current?.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return <>{children}</>;

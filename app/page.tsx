@@ -8,15 +8,12 @@ import Experience from "@/components/sections/Experience";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-white">
-      <BackgroundDots />
-      
+    <main className="relative min-h-screen bg-white">      
       <div className="relative z-10">
         <Hero />
         <Experience />
         <Projects />
         <Contact />
-        <Footer />
       </div>
     </main>
   );

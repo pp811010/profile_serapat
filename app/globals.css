@@ -16,12 +16,8 @@
   --font-sans: var(--font-roboto), system-ui, sans-serif;
   --font-italiana: var(--font-italiana), system-ui, sans-serif;
 }
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  25% { transform: translateY(-20px) translateX(10px); }
-  50% { transform: translateY(-10px) translateX(-10px); }
-  75% { transform: translateY(-30px) translateX(5px); }
-}
+
+
 .nav-bar {
   height: 64px;
   background: #000000;
@@ -246,54 +242,7 @@
   background: #8059ff;
   color: white;
 }
-.bg-spotlight-top {
-  position: fixed;
-  top: -30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120vw;
-  height: 80vh;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(139, 92, 246, 0.25) 0%,
-    rgba(168, 85, 247, 0.1) 40%,
-    transparent 70%
-  );
-  filter: blur(60px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0;
-  animation: fadeInStay 2s ease-out forwards, floatSlow 12s ease-in-out infinite;
-}
-.bg-glow-bottom {
-  position: fixed;
-  bottom: -20%;
-  right: -10%;
-  width: 80vw;
-  height: 60vh;
-  background: radial-gradient(
-    circle,
-    rgba(192, 132, 252, 0.15) 0%,
-    transparent 60%
-  );
-  filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0;
-  animation: fadeInStay 2.5s ease-out 0.5s forwards, floatSlowReverse 15s ease-in-out infinite;
-}
-@keyframes fadeInStay {
-  0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  100% { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-@keyframes floatSlow {
-  0%, 100% { transform: translateX(-50%) translateY(0) scale(1); }
-  50% { transform: translateX(-48%) translateY(-20px) scale(1.05); }
-}
-@keyframes floatSlowReverse {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-15px) scale(1.02); }
-}
+
 @media (max-width: 1024px) {
   .hero-section h1 {
     font-size: 40px;

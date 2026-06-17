@@ -1,43 +1,33 @@
-import Link from "next/link";
+'use client';
 import Image from "next/image";
 
 export default function Hero() {
+  
+
   return (
     <section className="hero-section pt-30 pb-24 px-6 lg:px-8 relative z-10">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-5 lg:mb-16">
           <h1 className="text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight mb-6">
             Software Developer & Full-Stack
           </h1>
 
           <p className="text-xl text-gray-600 leading-relaxed mb-10">
-            A profile of{" "}
             <span className="text-blue-600 font-medium">
-              Serapat Ratanapachai
+              Serapat Ratanapachai{'\''}s
             </span>
-            , showcasing professional experiences, projects, and technical.
+            {" "}Portfolio
           </p>
 
-          <div className="flex items-center justify-center gap-6">
-            <Link href="#projects" className="btn-dark">
-              <span>Explore Projects</span>
-            </Link>
-
-            <Link href="#quick-start" className="quick-start-link">
-              <span>Contact</span>
-              <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
-          </div>
+         
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-12 items-start">
 
           <div className="space-y-6">
             {/* Card 1 */}
             <div className="feature-card">
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-4 ">
                 <div className="code-icon">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -46,7 +36,7 @@ export default function Hero() {
                 <div>
                 
                   <p className="text-gray-600 leading-relaxed">
-                    Building high-performance APIs and business systems using Golang, FastAPI, PostgreSQL, and modern software architecture.
+                    Building high-performance APIs and business systems using Go, FastAPI, PostgreSQL, and modern software architecture.
                   </p>
                 </div>
               </div>
@@ -61,7 +51,7 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-1">
+                  <h4 className="text-sm lg:text-base lg:font-medium text-gray-900 mb-1">
                     Creating responsive and intuitive user experiences with Next.js, React, TypeScript, Tailwind CSS, and shadcn/ui.
                   </h4>
                 </div>
@@ -77,7 +67,7 @@ export default function Hero() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-900 mb-1">
+                  <h4 className="text-sm lg:text-base lg:font-medium text-gray-900 mb-1">
                     Developing intelligent systems powered by Agentic RAG, LLMs, vector databases, and multi-source knowledge retrieval.
                   </h4>
                 </div>
