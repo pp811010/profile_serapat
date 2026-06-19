@@ -480,7 +480,7 @@ export const projectsData: Record<string, Project> = {
       "ออกแบบเเละพัฒนา Backend เเละ ฐานข้อมูล PostgreSQL",
       "เชื่อมต่อฐานข้อมูลกับ SQLAlchemy ORM",
       "เชื่อมต่อ Spotify API สำหรับดึงข้อมูลเพลงและ Deezer API สำหรับ Demo เพลง 30 วินาที",
-      "พัฒนา Authentication",
+      "พัฒนา Authentication ด้วย oauth",
     ],
     highlights: [
       "ระบบรีวิวเพลงแยกตาม Beat, Lyric, Mood ด้วย Slider Bar",
@@ -629,9 +629,9 @@ export const projectsData: Record<string, Project> = {
       "ระบบถูกออกแบบมาเพื่อแก้ปัญหาการหาผู้เชี่ยวชาญที่เชื่อถือได้ และสร้างความมั่นใจให้ผู้ถามว่าเงินจะปลอดภัยจนกว่าจะได้รับคำตอบหรืองานที่ถูกต้อง พร้อมระบบรีวิวและให้คะแนนเพื่อรักษามาตรฐานของผู้เชี่ยวชาญในระบบ",
     ],
     responsibilities: [
-      "พัฒนาฟีเจอร์การเเสดงรายละเอียดงาน expert",
-      "พัฒนาฟีเจอร์การส่งมอบงานของ expert",
-      "พัฒนา Backend ในฝั่งของ expert",
+      "พัฒนาส่วนแสดงรายละเอียดงาน เพื่อให้ Expert เข้าถึงข้อมูล Asker เเละงบประมาณ",
+      "พัฒนาระบบการส่งมอบงาน (Job Submission) โดยเชื่อมต่อการอัปโหลดไฟล์เข้ากับ AWS S3",
+      "พัฒนาการจัดการข้อมูลในฝั่ง Expert",
     ],
     highlights: [
       "ระบบ Escrow Payment ถือเงินกลางจนกว่างานจะเสร็จ",
