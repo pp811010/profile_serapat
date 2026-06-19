@@ -124,7 +124,7 @@ export default function Navbar() {
               onClick={(e) => handleScrollToSection(e, link.id)}
               className={`nav-link-main rounded-full transition-colors ${
                 activeSection === link.id
-                  ? "text-white  font-semibold bg-[#dc003e]"
+                  ? "text-gray-600  font-semibold"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
