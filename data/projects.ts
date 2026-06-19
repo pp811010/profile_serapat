@@ -47,10 +47,9 @@ export const projectsData: Record<string, Project> = {
       "จากปัญหาดังกล่าว จึงเกิดเป็น Chatdio แพลตฟอร์มในรูปแบบ Agentic Retrieval-Augmented Generation (Agentic RAG) ที่พัฒนาขึ้นเพื่อทลายขีดจำกัดเดิม ๆ โดยเปิดโอกาสให้ผู้ใช้งานและองค์กรต่าง ๆ สามารถสร้างแชทบอท AI เฉพาะทางขึ้นมาใช้งานได้ด้วยตนเองอย่างง่ายดาย (No-Code/Low-Code AI Creation) โดยสามารถนำเข้าข้อมูลดิบของตนเองเพื่อใช้เป็นคลังความรู้ (Knowledge Base) หลักในการอ้างอิงและตอบคำถามได้อย่างแม่นยำและปลอดภัย",
     ],
     responsibilities: [
-      "พัฒนา web application รวมถึง UI และ UX",
-      "เชื่อมต่อ PostgreSQL และออกแบบและพัฒนา RESTful API ผ่าน FastAPI เพื่อสื่อสารระหว่าง Web Service และ AI Service",
-      "พัฒนา PostgreSQL Agent รวมถึงการ Testing และปรับปรุงความถูกต้องของการตอบคำถามด้วย Text-to-SQL",
-      "ประเมินประสิทธิภาพระบบด้วย Benchmark และ LLM as a Judge",
+      "พัฒนา web application ด้วย Next.js ให้รองรับการใช้งาน",
+      "พัฒนาในส่วนของ ฺFastAPI เชื่อมต่อฐานข้อมูล PostgreSQL และสร้าง RESTful API เพื่อสื่อสารระหว่าง Web Application และ AI Service",
+      "พัฒนา PostgreSQL Agent รวมถึงการ Testing และปรับปรุงความถูกต้องของการตอบคำถามด้วย Text-to-SQL ด้วย Benchmark และ LLM as a Judge",
     ],
     highlights: [
       "Agentic RAG Engine พร้อม Reasoning Mode",
@@ -221,8 +220,8 @@ export const projectsData: Record<string, Project> = {
       "FilmFolio จึงเป็นเว็บแอปพลิเคชันที่พัฒนาขึ้นเพื่อรวบรวมข้อมูลเกี่ยวกับภาพยนตร์ การรับชมรีวิว และการเขียนรีวิวไว้ในที่เดียว เพื่อช่วยให้ผู้ใช้สามารถตัดสินใจก่อนชมภาพยนตร์ ค้นหาและอ่านความคิดเห็นได้อย่างสะดวกรวดเร็ว รวมถึงสามารถแสดงความคิดเห็นและให้คะแนนของตัวเองต่อภาพยนตร์เรื่องนั้นๆ ได้",
     ],
     responsibilities: [
-      "ออกเเบบ UX/UI ในส่วนของ Movie Lover",
-      "พัฒนาในส่วนของหน้า Home, Movie Detail",
+      "ออกเเบบ UX/UI ในฝั่งของ Movie Lover ให้ใช้งานง่าย",
+      "พัฒนาใน Frontend ฝั่งของ Movie Lover",
     ],
     highlights: [
       "ระบบรีวิวและให้คะแนนภาพยนตร์ พร้อมประวัติการให้คะแนน",
@@ -347,9 +346,9 @@ export const projectsData: Record<string, Project> = {
     ],
     responsibilities: [
       "พัฒนาส่วนของ Home, พอร์ตการลงทุน, รายการโปรด และประวัติการซื้อขาย",
-      "เชื่อมต่อ CoinGecko API เพื่อดึงข้อมูลราคาและตลาดคริปโตแบบเรียลไทม์",
+      "เชื่อมต่อ External APIs ของ CoinGecko API เพื่อดึงข้อมูลราคาและตลาดคริปโตแบบเรียลไทม์",
       "พัฒนาระบบ Authentication และจัดการผู้ใช้ด้วย Clerk API",
-      "จัดการ Logic คำนวณกำไร-ขาดทุนของพอร์ตโฟลิโอ",
+      "ออกเเบบโครงสร้างฐานข้อมูลของระบบ เเละเชื่อมต่อเข้าสู่ Supabase"
     ],
     highlights: [
       "ระบบติดตามราคาคริปโตแบบเรียลไทม์ผ่าน CoinGecko API",
@@ -478,10 +477,10 @@ export const projectsData: Record<string, Project> = {
     ],
     responsibilities: [
       "พัฒนาฟีเจอร์ในการเเสดงผลเพลง เเละการรีวิวเพลงทั้งหมด ในฝั่งของ music lover",
-      "ออกแบบเเละพัฒนา Backend เเละ ฐานข้อมูลทั้งหมด",
+      "ออกแบบเเละพัฒนา Backend เเละ ฐานข้อมูล PostgreSQL",
       "เชื่อมต่อฐานข้อมูลกับ SQLAlchemy ORM",
       "เชื่อมต่อ Spotify API สำหรับดึงข้อมูลเพลงและ Deezer API สำหรับ Demo เพลง 30 วินาที",
-      "สร้างระบบ Authentication (Login/Register)",
+      "พัฒนา Authentication",
     ],
     highlights: [
       "ระบบรีวิวเพลงแยกตาม Beat, Lyric, Mood ด้วย Slider Bar",
