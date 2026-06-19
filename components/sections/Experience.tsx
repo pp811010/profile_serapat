@@ -5,17 +5,17 @@ const techs = [
 ];
 export default function Experience() {
     return (
-        <section id="experience" className="bg-white lg:py-10 px-6 lg:px-8">
-            <div className="max-w-6xl mx-auto pt-20 lg:pt-0">
+        <section id="experience" className="bg-[#0A1326] border-t-1 border-[#6D82A2]  lg:py-10 px-6 lg:pb-8 lg:pt-20 ">
+            <div className="max-w-6xl mx-auto pt-20 lg:pt-0 ">
                 <div className="flex flex-col lg:items-center gap-4 mb-6">
-                    <h2 className="text-black font-medium text-3xl lg:text-4xl"> Work Experience</h2>
-                    <p className="text-gray-500  text-lg lg:text-xl mb-6">A collection of work experiences throughout my professional journey.</p>
+                    <h2 className="font-medium text-4xl lg:text-5xl  text-white"> Work Experience</h2>
+                    <p className="text-[#7289A6]  text-lg lg:text-xl mb-6">A collection of work experiences throughout my professional journey.</p>
                 </div>
                 <Link href={"/experience"} >
-                    <div className="w-full lg:h-[550px] grid grid-cols-1 lg:grid-cols-5 rounded-xl shadow-md cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+                    <div className="w-full lg:h-[550px] bg-[#0A1326] border-1 border-[#0F1B3B]  grid grid-cols-1 lg:grid-cols-5 rounded-xl shadow-md cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                         <div className="lg:col-span-2  h-full flex">
                             <div className="flex flex-col items-start justify-center p-10 ">
-                                <h3 className="text-xl lg:text-2xl font-medium text-gray-900 mb-1">
+                                <h3 className="text-xl lg:text-2xl font-medium text-[#F4F4F6] mb-1">
                                     Software Developer Intern
                                 </h3>
                                 <p className="text-gray-600 text-md lg:text-xl mb-3">Datapro Computer Systems Co., Ltd</p>

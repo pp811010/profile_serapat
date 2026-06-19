@@ -22,7 +22,7 @@ function ImageSlider({ images }: { images: string[] }) {
     const next = () => setCurrent((i) => (i + 1) % images.length);
 
     return (
-        <div className="relative w-full max-w-5xl mx-auto my-10">
+        <div className="relative w-full max-w-5xl mx-auto my-10 ">
             <div className="relative overflow-hidden rounded-lg bg-gray-50 aspect-video flex items-center justify-center border border-border">
                 <Image
                     src={images[current]}
@@ -84,7 +84,7 @@ export default function ExperiencePage() {
     ];
 
     return (
-        <div className="min-h-screen bg-white py-12">
+        <div className="min-h-screen bg-white py-26">
             <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
 
                

@@ -2,104 +2,114 @@
 import Image from "next/image";
 
 export default function Hero() {
-
+  // เปลี่ยน path รูปพื้นหลังที่นี่
+  const bgImage = "/bg-hero.jpg"; // 👈 ใส่ path รูปของคุณ
 
   return (
-    <section className="hero-section pt-25 lg:pt-10 pb-24 lg:pb-12 px-6 lg:px-8 relative z-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center gap-12 lg:gap-5 ">
-          <div>
-            <Image
-              src="/profile2.jpg"
-              width={200}
-              height={200}
-              alt="profile"
-              className="rounded-full w-[250px] h-[250px]  object-cover shrink-0"
-            />
-          </div>
-          <div className="text-center max-w-4xl mx-auto lg:mb-5 mt-5 ">
-            <h1 className="text-5xl lg:text-6xl font-semibold text-gray-900 leading-tight mb-6">
-              Software Developer & Full-Stack
-            </h1>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+      
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src='/bg.jpg'
+          alt="Hero Background"
+          fill
+          priority
+          className="object-cover"
+          quality={90}
+        />
+      </div>
 
-            <p className="text-xl text-gray-600 leading-relaxed mb-10">
-              <span className="text-blue-600 font-medium">
-                Serapat Ratanapachai{'\''}s
-              </span>
-              {" "}Portfolio
-            </p>
+      {/* Dark Overlay - ปรับความเข้มได้ตามต้องการ */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-blue-950/85"></div>
 
+      {/* Additional color overlay สำหรับ tone สีน้ำเงิน */}
+      <div className="absolute inset-0 z-10 bg-blue-900/30 mix-blend-multiply"></div>
 
-          </div>
+      {/* Content */}
+      <div className="relative z-20 max-w-5xl mx-auto px-6 lg:px-8 text-center">
+        
+        {/* Small uppercase text */}
+        <p className="text-blue-400/90 text-sm lg:text-base font-medium tracking-[0.3em] uppercase mb-6 lg:mb-8">
+          Welcome to My Portfolio
+        </p>
+
+        {/* Main heading */}
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl text-white leading-[0.95] tracking-tight mb-6 lg:mb-8">
+        Development
+          Experiences
+        </h1>
+
+        {/* Description */}
+        <p className="text-base sm:text-lg lg:text-xl text-blue-200/80 max-w-2xl mx-auto leading-relaxed mb-10 lg:mb-12">
+          Full-Stack Developer specializing in API development,{" "}
+          <span className="text-blue-300 underline decoration-blue-400/50 underline-offset-4">
+            modern web frameworks
+          </span>{" "}
+          and AI-powered tools.
+        </p>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a 
+            href="#projects"
+            className="group relative px-8 py-3.5 rounded-full border border-blue-400/30 text-blue-100 font-medium text-sm tracking-wide hover:bg-blue-500/10 hover:border-blue-300/50 transition-all duration-300"
+          >
+            View My Work
+            <span className="inline-block ml-2 transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </a>
+          
+          <a 
+            href="#contact"
+            className="px-8 py-3.5 rounded-full text-blue-200/70 font-medium text-sm tracking-wide hover:text-blue-100 transition-all duration-300"
+          >
+            Get In Touch
+          </a>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-12 items-start">
-
-          <div>
-            {/* Card 1 */}
-            <div className="feature-card">
-              <div className="flex items-start gap-4 ">
-                <div className="code-icon">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                  </svg>
-                </div>
-                <div>
-
-                  <p className="text-gray-600 leading-relaxed">
-                    Building high-performance APIs and business systems using Go, FastAPI, PostgreSQL, and modern software architecture.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 2 */}
-            <div className="feature-item">
-              <div className="flex items-start gap-3">
-                <div className="feature-icon">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-sm lg:text-base lg:font-medium text-gray-900 mb-1">
-                    Creating responsive and intuitive user experiences with Next.js, React, TypeScript, Tailwind CSS, and shadcn/ui.
-                  </h4>
-                </div>
-              </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="feature-item">
-              <div className="flex items-start gap-3">
-                <div className="feature-icon">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <h4 className="text-sm lg:text-base lg:font-medium text-gray-900 mb-1">
-                    Developing intelligent systems powered by Agentic RAG, LLMs, vector databases, and multi-source knowledge retrieval.
-                  </h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="mockup-container">
-              <Image
-                src="https://cdn.macstories.net/002/nova-1615919427833.png"
-                alt="Serapat Ratanapachai Profile"
-                width={600}
-                height={500}
-                priority
-                className="mockup-image"
-              />
+        {/* Profile section */}
+        <div className="mt-16 lg:mt-20 flex flex-col items-center gap-4">
+          <div className="w-16 h-px bg-gradient-to-r from-transparent via-blue-400/30 to-transparent"></div>
+          <div className="flex items-center gap-3">
+            <Image
+              src="/profile2.jpg"
+              width={40}
+              height={40}
+              alt="Serapat Ratanapachai"
+              className="rounded-full w-10 h-10 object-cover border-2 border-blue-400/30"
+            />
+            <div className="text-left">
+              <p className="text-white text-sm font-medium">Serapat Ratanapachai</p>
+              <p className="text-blue-300/70 text-xs">Full-Stack Developer</p>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
+        <div className="w-6 h-10 rounded-full border-2 border-blue-400/30 flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-blue-400/50 rounded-full animate-scroll"></div>
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes scroll {
+          0% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(12px);
+            opacity: 0;
+          }
+        }
+        .animate-scroll {
+          animation: scroll 1.5s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 }

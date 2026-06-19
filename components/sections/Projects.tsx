@@ -42,7 +42,7 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "BitX Cryptocurrency Paper Trading Platform",
+    title: "BitX Virtual Asset Trading Platform",
     description: "BitX เป็นแพลตฟอร์มจำลองการซื้อขาย Cryptocurrency",
     techs: [
       "Next.js",
@@ -134,12 +134,12 @@ const filterOptions = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="bg-white py-20 lg:py-24 px-6 lg:px-8  relative z-10">
+    <section id="projects" className="bg-[#0A1326]  py-20 lg:py-24 px-6 lg:px-8  relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 flex  flex-col lg:items-center">
           <div className="flex items-center gap-4 mb-6">
             <div className="relative">
-              <h2 className="text-3xl lg:text-4xl font-medium text-gray-900">Projects</h2>
+              <h2 className="text-4xl lg:text-5xl font-medium text-[#F2F2F2]">Projects</h2>
 
             </div>
             <span className="px-3 py-1 bg-[#7345d0] text-white text-sm font-medium rounded-full">
@@ -147,7 +147,7 @@ export default function Projects() {
 
             </span>
           </div>
-          <p className="text-gray-500  text-lg mb-6">
+          <p className="text-[#7289A6]  text-lg mb-6">
             A collection of projects I have worked on throughout my journey as a developer.
           </p>
         </div>

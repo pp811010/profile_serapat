@@ -31,14 +31,12 @@ export default function RootLayout({
   return (
     <html lang="th" className={`${roboto.variable} ${italiana.variable}`}>
       <body className="font-sans antialiased bg-white">
-        <header className="h-16">
+        <header >
           <Navbar />
         </header>
         <LenisProvider>
           {children}
-          <footer>
-          <Footer />
-        </footer>
+          
         </LenisProvider>
       </body>
     </html>

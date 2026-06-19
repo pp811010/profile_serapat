@@ -47,10 +47,10 @@ export const projectsData: Record<string, Project> = {
       "จากปัญหาดังกล่าว จึงเกิดเป็น Chatdio แพลตฟอร์มในรูปแบบ Agentic Retrieval-Augmented Generation (Agentic RAG) ที่พัฒนาขึ้นเพื่อทลายขีดจำกัดเดิม ๆ โดยเปิดโอกาสให้ผู้ใช้งานและองค์กรต่าง ๆ สามารถสร้างแชทบอท AI เฉพาะทางขึ้นมาใช้งานได้ด้วยตนเองอย่างง่ายดาย (No-Code/Low-Code AI Creation) โดยสามารถนำเข้าข้อมูลดิบของตนเองเพื่อใช้เป็นคลังความรู้ (Knowledge Base) หลักในการอ้างอิงและตอบคำถามได้อย่างแม่นยำและปลอดภัย",
     ],
     responsibilities: [
-      "พัฒนา web application รวมถึง UI และ UX",
-      "เชื่อมต่อ PostgreSQL และออกแบบและพัฒนา RESTful API ผ่าน FastAPI เพื่อสื่อสารระหว่าง Web Service และ AI Service",
-      "พัฒนา PostgreSQL Agent รวมถึงการ Testing และปรับปรุงความถูกต้องของการตอบคำถามด้วย Text-to-SQL",
-      "ประเมินประสิทธิภาพระบบด้วย Benchmark และ LLM as a Judge",
+      "พัฒนา Web Application ของแพลตฟอร์ม",
+      "พัฒนา RESTful API ด้วย FastAPI เพื่อเชื่อมต่อการทำงานระหว่าง Web Service เเละ AI Service",
+      "พัฒนา PostgreSQL Agent ในการเอาคำถาม text-to-sql",
+      "ทดสอบ PostgraSQL Agent ด้วยการทำ Spider Benchmark และใช้เทคนิค LLM-as-a-Judge",
     ],
     highlights: [
       "Agentic RAG Engine พร้อม Reasoning Mode",
@@ -221,8 +221,8 @@ export const projectsData: Record<string, Project> = {
       "FilmFolio จึงเป็นเว็บแอปพลิเคชันที่พัฒนาขึ้นเพื่อรวบรวมข้อมูลเกี่ยวกับภาพยนตร์ การรับชมรีวิว และการเขียนรีวิวไว้ในที่เดียว เพื่อช่วยให้ผู้ใช้สามารถตัดสินใจก่อนชมภาพยนตร์ ค้นหาและอ่านความคิดเห็นได้อย่างสะดวกรวดเร็ว รวมถึงสามารถแสดงความคิดเห็นและให้คะแนนของตัวเองต่อภาพยนตร์เรื่องนั้นๆ ได้",
     ],
     responsibilities: [
-      "ออกเเบบ UX/UI ในส่วนของ Movie Lover",
-      "พัฒนาในส่วนของหน้า Home, Movie Detail",
+      "ออกแบบ UX/UI การใช้งาน สำหรับ Movie Lover",
+      "พัฒนา frontend ในฝั่งของ Movie Lover",
     ],
     highlights: [
       "ระบบรีวิวและให้คะแนนภาพยนตร์ พร้อมประวัติการให้คะแนน",
@@ -332,7 +332,7 @@ export const projectsData: Record<string, Project> = {
   // 3. BitX
   "bitx": {
     id: "3",
-    title: "Bitx Cryptocurrency Paper Trading Platform",
+    title: "Bitx Virtual Asset Trading Platform",
     subtitle: "แพลตฟอร์มจำลองการซื้อขายเหรียญคริปโต",
     author: "Serapat Ratanapachai",
     duration: "1 ปี",
@@ -481,7 +481,7 @@ export const projectsData: Record<string, Project> = {
       "ออกแบบเเละพัฒนา Backend เเละ ฐานข้อมูลทั้งหมด",
       "เชื่อมต่อฐานข้อมูลกับ SQLAlchemy ORM",
       "เชื่อมต่อ Spotify API สำหรับดึงข้อมูลเพลงและ Deezer API สำหรับ Demo เพลง 30 วินาที",
-      "สร้างระบบ Authentication (Login/Register)",
+      "พัฒนาส่วนของการ Authentication ",
     ],
     highlights: [
       "ระบบรีวิวเพลงแยกตาม Beat, Lyric, Mood ด้วย Slider Bar",
@@ -630,9 +630,9 @@ export const projectsData: Record<string, Project> = {
       "ระบบถูกออกแบบมาเพื่อแก้ปัญหาการหาผู้เชี่ยวชาญที่เชื่อถือได้ และสร้างความมั่นใจให้ผู้ถามว่าเงินจะปลอดภัยจนกว่าจะได้รับคำตอบหรืองานที่ถูกต้อง พร้อมระบบรีวิวและให้คะแนนเพื่อรักษามาตรฐานของผู้เชี่ยวชาญในระบบ",
     ],
     responsibilities: [
-      "พัฒนาฟีเจอร์การเเสดงรายละเอียดงาน expert",
-      "พัฒนาฟีเจอร์การส่งมอบงานของ expert",
-      "พัฒนา Backend ในฝั่งของ expert",
+      "พัฒนาส่วนแสดงรายละเอียดงาน เพื่อให้ Expert เข้าถึงข้อมูล Requirement และงบประมาณได้อย่างครบถ้วน",
+      "พัฒนาระบบการส่งมอบงาน (Job Submission) โดยเชื่อมต่อการอัปโหลดไฟล์เข้ากับ AWS S3",
+      "พัฒนาการจัดการข้อมูลในฝั่ง Expert",
     ],
     highlights: [
       "ระบบ Escrow Payment ถือเงินกลางจนกว่างานจะเสร็จ",
@@ -779,11 +779,10 @@ export const projectsData: Record<string, Project> = {
       "Sport Management System จึงเป็น Concept Project ที่พัฒนาขึ้นเพื่อแก้ปัญหาเหล่านี้ โดยเป็นระบบ Web Application ที่รองรับการจองสนามแบบ Time Slot (จำกัดเวลาไม่เกิน 2 ชั่วโมงต่อครั้ง) ระบบรายงานปัญหาสนาม/อุปกรณ์ชำรุด และระบบจัดการหลังบ้านที่แบ่งสิทธิ์การเข้าถึงอย่างชัดเจนตามบทบาทของผู้ใช้งาน",
     ],
     responsibilities: [
-      "พัฒนาฟีเจอร์ในฝั่งของ ผู้ใช้งานสนาม (User), ผู้จัดการสนาม (Manager) การจองสนาม ทั้งหมด",
+      "พัฒนาฟีเจอร์ในฝั่งของ ผู้ใช้งานสนาม (User), ผู้จัดการสนาม (Manager)",
       "ออกแบบและ Implement ระบบ Role-Based Access Control (RBAC) เพื่อจำกัดสิทธิ์และซ่อนเมนูตามบทบาท",
-      "หัฒนา Logic การจองสนามแบบ Time Slot พร้อมตรวจสอบเงื่อนไขจำกัดเวลาไม่เกิน 2 ชั่วโมง",
-      "พัฒนาระบบ CRUD สำหรับจัดการข้อมูลสนาม ประเภทกีฬา",
-      "ออกเเบบฐานข้อมูลเเละความสัมพันธ์ระหว่างตารางของระบบ",
+      "หัฒนา Logic การจองสนามแบบ Time Slot พร้อมตรวจสอบเงื่อนไขจำกัดเวลา",
+      "ออกเเบบฐานข้อมูลเเละความสัมพันธ์ระหว่างตาราง",
     ],
     highlights: [
       "ระบบจองสนามแบบ Time Slot (จำกัดครั้งละไม่เกิน 2 ชั่วโมง)",

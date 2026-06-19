@@ -17,7 +17,6 @@
   --font-italiana: var(--font-italiana), system-ui, sans-serif;
 }
 
-
 .nav-bar {
   height: 64px;
   background: #000000;
@@ -288,7 +287,8 @@
   text-decoration: none;
 }
 .nav-link-main:hover {
-  background: rgba(37, 99, 235, 0.08);
+  background: #fee2e2;
+  /* background: rgba(37, 99, 235, 0.08); */
   color: #2563eb;
 }
 .btn-main-primary {
@@ -343,4 +343,18 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
   border: 1px solid #e5e7eb;
   z-index: 50;
+}
+
+/* ====== SKELETON LOADING - Shimmer Effect ====== */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
 }
