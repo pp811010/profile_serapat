@@ -119,6 +119,20 @@ const projectsData = [
     image: "/projects/omakase/hero.jpg",
     role: "Full-Stack Dev",
   },
+  {
+    id: 8,
+    title: "Su Clothes - Clothing Store Management System",
+    description:
+      "Desktop Application สำหรับจัดการร้านค้าเสื้อผ้า พัฒนาขึ้นเพื่อศึกษาและประยุกต์ใช้หลักการ Object-Oriented Programming (OOP)",
+    techs: [
+      "Java",
+      "Object-Oriented Programming (OOP)",
+      "Java Swing",
+    ],
+    image: "/projects/suclothes/hero.jpg",
+    role: "Java Developer",
+  }
+
 ];
 
 const filterOptions = [

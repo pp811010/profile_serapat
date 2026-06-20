@@ -47,7 +47,7 @@ export default function Hero() {
                 <div>
 
                   <p className="text-gray-600 leading-relaxed">
-                    Building high-performance APIs and business systems using Go, FastAPI, PostgreSQL, and modern software architecture.
+                    Building high-performance APIs and business systems using Golang, FastAPI, PostgreSQL, and modern software architecture.
                   </p>
                 </div>
               </div>

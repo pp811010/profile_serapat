@@ -22,7 +22,7 @@ export interface Project {
     description: string;
   }[];
   actors: { emoji: string; role: string; description: string }[];
-  platform?: "web" | "mobile";
+  platform?: "web" | "mobile" | "desktop";
   heroImage: string;
   screenshotCount: number;
   postedAt?: string;
@@ -43,12 +43,12 @@ export const projectsData: Record<string, Project> = {
     liveUrl: "#",
     repoUrl: "https://github.com/siroratN/Chatdio.git",
     description: [
-      "ในปัจจุบัน องค์กรและบริษัทหลายแห่งมีความต้องการที่จะมีระบบ Chatbot เป็นของตนเอง เพื่อเข้ามาช่วยแบ่งเบาภาระในเรื่องการตอบคำถามลูกค้า (Customer Support) หรือช่วยให้บุคลากรภายในองค์กรสามารถสืบค้นข้อเท็จจริงและเข้าถึงข้อมูลภายในองค์กรได้อย่างสะดวกรวดเร็ว อย่างไรก็ตาม แชทบอททั่วไปในท้องตลาดมักมีข้อจำกัดอย่างมากในการเข้าถึงข้อมูลที่เป็นความลับหรือข้อมูลเฉพาะทางภายในองค์กร อีกทั้งกระบวนการพัฒนาและติดตั้งระบบ AI ในลักษณะนี้ยังมีโครงสร้างที่ซับซ้อน ต้องใช้ทั้งงบราคาสูงและผู้เชี่ยวชาญเฉพาะทาง ทำให้องค์กรส่วนใหญ่เข้าไม่ถึงเทคโนโลยีนี้",
+      "ในปัจจุบัน องค์กรและบริษัทหลายแห่งมีความต้องการที่จะมีระบบ Chatbot เป็นของตนเอง เพื่อเข้ามาช่วย Customer Support หรือ การสืบค้นข้อมูลภายในองค์กร แต่ในเรื่องข้อจำกัดของ Chatbot ทั้วไป เเละ ความยากของการสร้าง AI RAG Chatbot ทำให้ทำได้ยาก",
       "จากปัญหาดังกล่าว จึงเกิดเป็น Chatdio แพลตฟอร์มในรูปแบบ Agentic Retrieval-Augmented Generation (Agentic RAG) ที่พัฒนาขึ้นเพื่อทลายขีดจำกัดเดิม ๆ โดยเปิดโอกาสให้ผู้ใช้งานและองค์กรต่าง ๆ สามารถสร้างแชทบอท AI เฉพาะทางขึ้นมาใช้งานได้ด้วยตนเองอย่างง่ายดาย (No-Code/Low-Code AI Creation) โดยสามารถนำเข้าข้อมูลดิบของตนเองเพื่อใช้เป็นคลังความรู้ (Knowledge Base) หลักในการอ้างอิงและตอบคำถามได้อย่างแม่นยำและปลอดภัย",
     ],
     responsibilities: [
-      "พัฒนา web application ด้วย Next.js ให้รองรับการใช้งาน",
-      "พัฒนาในส่วนของ ฺFastAPI เชื่อมต่อฐานข้อมูล PostgreSQL และสร้าง RESTful API เพื่อสื่อสารระหว่าง Web Application และ AI Service",
+      "พัฒนาและปรับปรุงส่วนติดต่อผู้ใช้ (UI) ของเว็บแอปพลิเคชันด้วย Next.js, shadcn/ui และ Tailwind CSS",
+      "พัฒนาระบบ Backend ด้วย FastAPI และ PostgreSQL เเละออกแบบ RESTful API เพื่อรองรับการสื่อสารระหว่าง Web Application และ AI Service",
       "พัฒนา PostgreSQL Agent รวมถึงการ Testing และปรับปรุงความถูกต้องของการตอบคำถามด้วย Text-to-SQL ด้วย Benchmark และ LLM as a Judge",
     ],
     highlights: [
@@ -56,8 +56,7 @@ export const projectsData: Record<string, Project> = {
       "รองรับ Document, PostgreSQL, API Agent",
       "ระบบ Human Corrections ปรับปรุงความถูกต้อง",
       "รองรับหลาย LLM: GPT-4.1-mini, Gemini 2.5 Flash, DeepSeek V3.2",
-      "Embed ผ่าน iframe หรือ Shared Link ได้ง่าย",
-      "คะแนนความพึงพอใจผู้ใช้ 4.2-4.5 จาก 5",
+      "Embed ผ่าน iframe หรือ Shared Link ได้ง่าย"
     ],
     techStack: [
       "Next.js",
@@ -216,12 +215,12 @@ export const projectsData: Record<string, Project> = {
     liveUrl: "#",
     repoUrl: "https://github.com/DefinitelyNotJay/FilmFolio.git",
     description: [
-      "ในปัจจุบันอุตสาหกรรมภาพยนตร์มีการขยายตัวอย่างรวดเร็ว และมีภาพยนตร์ออกฉายในแต่ละปีจำนวนมาก ทำให้การตัดสินใจเลือกดูภาพยนตร์สักเรื่องต้องพิจารณาหลายด้านเพื่อให้คุ้มค่า แต่ข้อมูลเกี่ยวกับภาพยนตร์และการรีวิวภาพยนตร์นั้นมักกระจัดกระจายและหาได้ยาก",
+      "ในปัจจุบันอุตสาหกรรมภาพยนตร์มีการขยายตัวอย่างรวดเร็ว  แต่ข้อมูลเกี่ยวกับภาพยนตร์และการรีวิวภาพยนตร์นั้นมักกระจัดกระจายและหาได้ยาก",
       "FilmFolio จึงเป็นเว็บแอปพลิเคชันที่พัฒนาขึ้นเพื่อรวบรวมข้อมูลเกี่ยวกับภาพยนตร์ การรับชมรีวิว และการเขียนรีวิวไว้ในที่เดียว เพื่อช่วยให้ผู้ใช้สามารถตัดสินใจก่อนชมภาพยนตร์ ค้นหาและอ่านความคิดเห็นได้อย่างสะดวกรวดเร็ว รวมถึงสามารถแสดงความคิดเห็นและให้คะแนนของตัวเองต่อภาพยนตร์เรื่องนั้นๆ ได้",
     ],
     responsibilities: [
-      "ออกเเบบ UX/UI ในฝั่งของ Movie Lover ให้ใช้งานง่าย",
-      "พัฒนาใน Frontend ฝั่งของ Movie Lover",
+      "ออกแบบ UX/UI สำหรับแพลตฟอร์มในฝั่งของ Movie Lover โดยเน้นการใช้งานที่ง่าย",
+      "พัฒนา Frontend ของ Movie Lover ด้วย Next.js และ Tailwind CSS สำหรับแสดงรายการภาพยนตร์ รีวิว และรองรับการแสดงผลแบบ Responsive",
     ],
     highlights: [
       "ระบบรีวิวและให้คะแนนภาพยนตร์ พร้อมประวัติการให้คะแนน",
@@ -345,7 +344,7 @@ export const projectsData: Record<string, Project> = {
       "ระบบถูกออกแบบมาเพื่อให้ผู้ใช้เข้าใจกลไกของตลาดคริปโต และการวิเคราะห์ราคา โดยให้พอร์ตเริ่มต้นของแต่ละ user 100,000 บาท เพื่อทดลองเทรดแบบไร้ความเสี่ยง",
     ],
     responsibilities: [
-      "พัฒนาส่วนของ Home, พอร์ตการลงทุน, รายการโปรด และประวัติการซื้อขาย",
+      "พัฒนาส่วนของ Frontend ด้วย Next.js และ Tailwind CSS พร้อมออกแบบหน้าจอให้รองรับการแสดงผลแบบ Responsive",
       "เชื่อมต่อ External APIs ของ CoinGecko API เพื่อดึงข้อมูลราคาและตลาดคริปโตแบบเรียลไทม์",
       "พัฒนาระบบ Authentication และจัดการผู้ใช้ด้วย Clerk API",
       "ออกเเบบโครงสร้างฐานข้อมูลของระบบ เเละเชื่อมต่อเข้าสู่ Supabase"
@@ -472,15 +471,13 @@ export const projectsData: Record<string, Project> = {
     liveUrl: "#",
     repoUrl: "https://github.com/pp811010/MuMood-musicReview.git",
     description: [
-      "ในปัจจุบันยังไม่มีแพลตฟอร์มที่รองรับการรีวิวเพลงอย่างครบถ้วนและน่าเชื่อถือ ผู้ใช้ส่วนใหญ่ขาดพื้นที่ในการแลกเปลี่ยนความคิดเห็นเกี่ยวกับเพลงอย่างจริงจัง รวมถึงคนทำเพลงก็ไม่มีช่องทางรับ Feedback ที่ชัดเจนจากผู้ฟัง",
+      "ในปัจจุบันยังผู้ใช้ส่วนใหญ่ขาดพื้นที่ในการแลกเปลี่ยนความคิดเห็นเกี่ยวกับเพลงอย่างจริงจัง รวมถึงคนทำเพลงก็ไม่มีช่องทางรับ Feedback ที่ชัดเจนจากผู้ฟัง",
       "MuMood จึงเป็นแพลตฟอร์มรีวิวเพลงที่พัฒนาขึ้นเพื่อแก้ปัญหานี้ โดยเชื่อมต่อกับ Spotify และ Deezer API เพื่อให้ผู้ใช้สามารถฟังเพลง Demo 30 วินาที และให้คะแนนแยกตามด้าน Beat, Lyric และ Mood ผ่าน Slider Bar พร้อมระบบ Smart Search และ Admin Panel สำหรับจัดการเพลงแบบ Custom",
     ],
     responsibilities: [
-      "พัฒนาฟีเจอร์ในการเเสดงผลเพลง เเละการรีวิวเพลงทั้งหมด ในฝั่งของ music lover",
-      "ออกแบบเเละพัฒนา Backend เเละ ฐานข้อมูล PostgreSQL",
-      "เชื่อมต่อฐานข้อมูลกับ SQLAlchemy ORM",
+      "พัฒนาฟีเจอร์ในการเเสดงผลเพลง เเละการรีวิวเพลงทั้งหมด ในฝั่งของ music lover ด้วย Flutter",
+      "พัฒนาระบบ Backend ด้วย FastAPI เชิ่อมต่อเข้ากับฐานข้อมูล PostgreSQL โดยใช้ SQLAlchemy ORM สำหรับจัดการฐานข้อมูล",
       "เชื่อมต่อ Spotify API สำหรับดึงข้อมูลเพลงและ Deezer API สำหรับ Demo เพลง 30 วินาที",
-      "พัฒนา Authentication ด้วย oauth",
     ],
     highlights: [
       "ระบบรีวิวเพลงแยกตาม Beat, Lyric, Mood ด้วย Slider Bar",
@@ -629,9 +626,9 @@ export const projectsData: Record<string, Project> = {
       "ระบบถูกออกแบบมาเพื่อแก้ปัญหาการหาผู้เชี่ยวชาญที่เชื่อถือได้ และสร้างความมั่นใจให้ผู้ถามว่าเงินจะปลอดภัยจนกว่าจะได้รับคำตอบหรืองานที่ถูกต้อง พร้อมระบบรีวิวและให้คะแนนเพื่อรักษามาตรฐานของผู้เชี่ยวชาญในระบบ",
     ],
     responsibilities: [
-      "พัฒนาส่วนแสดงรายละเอียดงาน เพื่อให้ Expert เข้าถึงข้อมูล Asker เเละงบประมาณ",
-      "พัฒนาระบบการส่งมอบงาน (Job Submission) โดยเชื่อมต่อการอัปโหลดไฟล์เข้ากับ AWS S3",
-      "พัฒนาการจัดการข้อมูลในฝั่ง Expert",
+      "พัฒนาหน้าแสดงรายละเอียดงานเพื่อให้ Expert สามารถเข้าถึงข้อมูลงานจาก (Asker) ด้วย Next.js ",
+      "พัฒนาระบบส่งมอบงาน (Job Submission) พร้อมเชื่อมต่อการอัปโหลดและจัดเก็บไฟล์บน AWS S3",
+      "พัฒนาฟีเจอร์จัดการข้อมูลสำหรับผู้ใช้งานฝั่ง Expert ด้วย Golang",
     ],
     highlights: [
       "ระบบ Escrow Payment ถือเงินกลางจนกว่างานจะเสร็จ",
@@ -778,11 +775,11 @@ export const projectsData: Record<string, Project> = {
       "Sport Management System จึงเป็น Concept Project ที่พัฒนาขึ้นเพื่อแก้ปัญหาเหล่านี้ โดยเป็นระบบ Web Application ที่รองรับการจองสนามแบบ Time Slot (จำกัดเวลาไม่เกิน 2 ชั่วโมงต่อครั้ง) ระบบรายงานปัญหาสนาม/อุปกรณ์ชำรุด และระบบจัดการหลังบ้านที่แบ่งสิทธิ์การเข้าถึงอย่างชัดเจนตามบทบาทของผู้ใช้งาน",
     ],
     responsibilities: [
-      "พัฒนาฟีเจอร์ในฝั่งของ ผู้ใช้งานสนาม (User), ผู้จัดการสนาม (Manager) การจองสนาม ทั้งหมด",
+      "พัฒนาฟีเจอร์ในฝั่งของ ผู้ใช้งานสนาม (User), ผู้จัดการสนาม (Manager) ด้วย Django, HTML, Tailwind CSS, JS",
       "ออกแบบและ Implement ระบบ Role-Based Access Control (RBAC) เพื่อจำกัดสิทธิ์และซ่อนเมนูตามบทบาท",
-      "หัฒนา Logic การจองสนามแบบ Time Slot พร้อมตรวจสอบเงื่อนไขจำกัดเวลาไม่เกิน 2 ชั่วโมง",
+      "หัฒนา Logic การจองสนามแบบ Time Slot",
       "พัฒนาระบบ CRUD สำหรับจัดการข้อมูลสนาม ประเภทกีฬา",
-      "ออกเเบบฐานข้อมูลเเละความสัมพันธ์ระหว่างตารางของระบบ",
+      "ออกเเบบฐานข้อมูล postgresql",
     ],
     highlights: [
       "ระบบจองสนามแบบ Time Slot (จำกัดครั้งละไม่เกิน 2 ชั่วโมง)",
@@ -868,10 +865,9 @@ export const projectsData: Record<string, Project> = {
       "ระบบครอบคลุมการทำงานทั้งฝั่งลูกค้าที่สามารถจองโต๊ะ เลือกห้อง และเลือกเมนูอาหาร (Course) ล่วงหน้าได้จากทุกที่ทุกเวลา รวมถึงมีระบบเฉพาะสำหรับเชฟ พนักงานต้อนรับ และผู้จัดการ เพื่อจัดการออเดอร์ ตรวจสอบสถานะ และดูรายงานรายได้แบบเรียลไทม์",
     ],
     responsibilities: [
-      "วิเคราะห์และรวบรวมความต้องการของระบบ ออกแบบกระบวนการทำงาน (System Workflow) รวมถึงจัดทำ Use Case Diagram และ ERD",
-      "ออกเเบบ UX/UI จองที่นั่ง เลือกห้อง และเลือกเมนูอาหารแบบ Course สำหรับลูกค้า",
-      "พัฒนาฟีเจอร์ จองที่นั่ง เลือกห้อง และเลือกเมนูอาหารแบบ Course สำหรับลูกค้า",
-      "พัฒนาฟีเจอร์ของ Manager",
+      "พัฒนา frontend เเละ backend  สำหรับระบบจองที่นั่ง เลือกห้อง และจัดการคำสั่งซื้ออาหารด้วย PHP และ SQLite",
+      "พัฒนา backend สำหรับการจัดการคอร์สอาหารของผู้จัดการ",
+      "ออกแบบและจัดการฐานข้อมูลสำหรับการจอง การจัดการห้อง และเมนูอาหาร",
     ],
     highlights: [
       "ระบบจองโต๊ะและเลือกห้องล่วงหน้าแบบออนไลน์",
@@ -1039,6 +1035,166 @@ export const projectsData: Record<string, Project> = {
       "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1200&q=80",
     screenshotCount: 20,
   },
+
+  "suclothes": {
+    "id": "8",
+    "title": "Su Clothes",
+    "platform": "desktop",
+    "subtitle": "Clothing Store Management System - ระบบจัดการร้านค้าเสื้อผ้า",
+    "author": "Serapat Ratanapachai",
+    "duration": "-",
+    "dateRange": "2023",
+    "role": "Java Developer",
+    "col": 2,
+    "status": "Completed",
+    "liveUrl": "#",
+    "repoUrl": "#",
+    "description": [
+      "โปรเจกต์นี้ถูกพัฒนาขึ้นเพื่อศึกษาและพิสูจน์แนวคิด (Proof of Concept) ของการพัฒนาซอฟต์แวร์ด้วยหลักการ Object-Oriented Programming (OOP) โดยจำลองระบบจัดการร้านค้าเสื้อผ้า",
+      "Su Clothes เป็นระบบจัดการร้านค้าเสื้อผ้าที่พัฒนาด้วยภาษา Java โดยมีเป้าหมายเพื่อช่วยจัดการสินค้า คำสั่งซื้อ และกระบวนการสั่งซื้อสินค้าในร้านค้า",
+      "ระบบรองรับการใช้งานทั้งฝั่งลูกค้าและผู้ดูแลระบบ โดยสามารถเลือกสินค้า จัดการตะกร้าสินค้า ชำระเงิน และติดตามคำสั่งซื้อ รวมถึงจัดการสต็อกสินค้าได้ผ่านระบบ Admin"
+    ],
+    "responsibilities": [
+      "พัฒนาฟีเจอร์ เเละ GUI สำหรับลูกค้าและผู้ดูแลระบบด้วย Java Swing โดยการทำ MDI",
+      "พัฒนาระบบจัดการสินค้า และกระบวนการสั่งซื้อสินค้า",
+      "implement หลักกการ OOP มาใช้"
+    ],
+    "highlights": [
+      "ระบบเลือกซื้อสินค้าและจัดการตะกร้าสินค้า",
+      "ระบบอัปโหลดหลักฐานการชำระเงิน",
+      "ระบบจัดการข้อมูลการจัดส่งสินค้า",
+      "ระบบ Admin จัดการสินค้าและสต็อก",
+      "แสดงข้อมูลสินค้าผ่าน JTable",
+      "พัฒนาตามหลักการ OOP และ Design Pattern พื้นฐาน"
+    ],
+    "techStack": [
+      "Java",
+      "Object-Oriented Programming (OOP)",
+      "Java Swing",
+    ],
+    "features": [
+      {
+        "category": "Customer Feature",
+        "badge": "Shopping",
+        "icon": "ui",
+        "title": "Shopping Cart",
+        "description": "เลือกสินค้า เพิ่มลงตะกร้า และสรุปรายการสั่งซื้อ"
+      },
+      {
+        "category": "Customer Feature",
+        "badge": "Payment",
+        "icon": "star",
+        "title": "Payment Upload",
+        "description": "อัปโหลดหลักฐานการชำระเงินผ่าน QR Code"
+      },
+      {
+        "category": "Admin Feature",
+        "badge": "Stock",
+        "icon": "backend",
+        "title": "Stock Management",
+        "description": "จัดการสินค้าในคลัง เพิ่ม แก้ไข และลบสินค้า"
+      },
+      {
+        "category": "Admin Feature",
+        "badge": "Order",
+        "icon": "engine",
+        "title": "Order Management",
+        "description": "ตรวจสอบรายการสั่งซื้อและติดตามสถานะคำสั่งซื้อ"
+      }
+    ],
+    "actors": [
+      {
+        "emoji": "🛍️",
+        "role": "Customer",
+        "description": "ลูกค้าที่ต้องการเลือกซื้อสินค้าและสั่งซื้อสินค้า"
+      },
+      {
+        "emoji": "🛠️",
+        "role": "Admin",
+        "description": "ผู้ดูแลระบบสำหรับจัดการสินค้าและคำสั่งซื้อ"
+      }
+    ],
+     screenshots: [
+      {
+        title: "หน้าเลือกบทบาท",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/role.png",
+      },
+      {
+        title: "หน้าเเสดงสินค้า",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/home_client.png",
+      },
+      {
+        title: "หน้าเเสดงสินค้าโดยเลือกประเภท เสื้อ",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/cate1.png",
+      },
+      {
+        title: "หน้าเเสดงสินค้าโดยเลือกประเภท กางเกง",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/cate2.png",
+      },
+      {
+        title: "ส่วนของ ตะกร้าสินค้า",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/cart.png",
+      },
+      {
+        title: "หน้าของใส่รายละเอียดที่อยู่จัดส่ง",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/shipping.jpg",
+      },
+      {
+        title: "หน้าชำระเงินเเละหลักฐานการการชำระเงิน",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/qr.jpg",
+      },
+      {
+        title: "หน้าเเสดงการจัดส่ง",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/success.jpg",
+      },
+      {
+        title: "หน้า Login เข้าสู่ระบบฝั่ง admin",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/login.jpg",
+      },
+      {
+        title: "หน้าจัดการสินค้าทั้งหมดภายในร้าน",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/admin.png",
+      },
+       {
+        title: "หน้าการเพิ่มสินค้า",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/additem.jpg",
+      },
+      {
+        title: "หน้าการเเเก้ไขสินค้า",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/edititem.jpg",
+      },
+      {
+        title: "ส่วนของการลบสินค้าจากตาราง Jtable",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/delete.png",
+      },
+       {
+        title: "หน้าการเเสดงคำสั่งซื้อสินค้าทั้งหมด",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/order.png",
+      },
+      {
+        title: "export คำสั่งซื้อสินค้าทั้งเป็น excel file",
+        description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
+        image: "/projects/suclothes/file.png",
+      },
+    ],
+    "heroImage": "/projects/suclothes/hero.jpg",
+    "postedAt": "2023",
+    "screenshotCount": 20
+  }
 };
 
 export function getProjectById(id: string): Project | undefined {

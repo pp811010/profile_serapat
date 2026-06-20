@@ -55,6 +55,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       : "grid-cols-1";
 
   const isMobile = project.platform === "mobile";
+   const isWeb = project.platform === "web";
 
   return (
     <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10">
@@ -76,7 +77,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               <div className="text-sm text-muted mb-8">
                 <p className="mb-1"><span className="font-semibold text-ink">Role:</span> {project.role}</p>
                 <p><span className="font-semibold text-ink">Status:</span> {project.status}</p>
-                <p className="mb-1"><span className="font-semibold text-ink">Platform:</span> {isMobile ? "📱 Mobile App" : "💻 Web Application"}</p>
+                <p className="mb-1"><span className="font-semibold text-ink">Platform:</span> {isMobile ? "📱 Mobile App" :  isWeb ?  "💻 Web Application" : "Desktop Application"}</p>
               </div>
 
               <div>

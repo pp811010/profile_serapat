@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 const techs = [
-    "Next.js", "Go", "SQL Server"
+    "Next.js", "Golang", "SQL Server"
 ];
 export default function Experience() {
     return (
