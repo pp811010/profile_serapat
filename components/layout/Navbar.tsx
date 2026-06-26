@@ -133,7 +133,7 @@ export default function Navbar() {
           ))}
 
 
-          <a href="/resume_serapat_ratanapachai.pdf" target="_blank" rel="noopener noreferrer" className="btn-main-primary ml-4">
+          <a href="/cv_serapat_ratanapachai.pdf" target="_blank" rel="noopener noreferrer" className="btn-main-primary ml-4">
             Resume
           </a>
         </div>
@@ -168,7 +168,7 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            <a href="/resume_serapat_ratanapachai.pdf" target="_blank" rel="noopener noreferrer" className="block w-full text-center btn-main-primary mt-2">
+            <a href="/cv_serapat_ratanapachai.pdf" target="_blank" rel="noopener noreferrer" className="block w-full text-center btn-main-primary mt-2">
               Resume
             </a>
           </div>

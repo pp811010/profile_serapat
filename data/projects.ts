@@ -243,7 +243,7 @@ export const projectsData: Record<string, Project> = {
       {
         title: "หน้า Home ของลูกค้า",
         description: "หน้าแสดงรายการภาพยนตร์สำหรับผู้ใช้ทั่วไป",
-        image: "/projects/filmfolio/Home.jpg",
+        image: "/projects/filmfolio/home.jpg",
       },
       {
         title: "หน้ารายละเอียดของหนัง",
