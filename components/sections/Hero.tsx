@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const ACCENT = "#FF5A36";
 const ACCENT_ALT = "#00D4B4";
 const PAPER = "#ffffffff";
-const CREAM = "#f0e16cff";
+const CREAM = "#e8ee65ff";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -197,7 +197,7 @@ export default function Hero() {
 
                   <div className="mb-8">
                     <p className="text-2xl font-bold mb-1 text-black transition-colors duration-500 ">Software Developer intern</p>
-                    <p className="text-md text-gray-500 group-hover:text-gray-700 font-mono transition-colors duration-500">Datapro Computer Systems Co., Ltd</p>
+                    <p className="text-sm text-gray-500 group-hover:text-gray-700 font-mono transition-colors duration-500">Datapro Computer Systems Co., Ltd</p>
                   </div>
                 </div>
 
