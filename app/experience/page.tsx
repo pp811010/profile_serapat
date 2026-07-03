@@ -86,7 +86,7 @@ export default function ExperiencePage() {
                  <div className="mt-3">
                         <h4 className="font-bold text-3xl">Software Developer Intern</h4>
                         <p className="text-gray-700 text-lg">@Datapro Computer Systems Co., Ltd. | Bangkok, Thailand </p>
-                        <p className="text-gray-500 text-lg">April – June 2002 · 3 months </p>
+                        <p className="text-gray-500 text-lg">April – June 2025 · 3 months </p>
                     </div>
 
                 <div className="">
