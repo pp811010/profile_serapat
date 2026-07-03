@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const ACCENT = "#FF5A36";
 const ACCENT_ALT = "#00D4B4";
 const PAPER = "#ffffffff";
-const CREAM = "#e8ee65ff";
+const CREAM = "#f4a6efff";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
@@ -52,7 +52,7 @@ export default function Hero() {
                 <span style={{ color: ACCENT }}>Frontend, Backend, Web & Mobile</span>
               </h2>
               <p className="text-gray-600 text-sm leading-relaxed mb-8">
-                A curated collection of my past work, projects, and technical journey. I build robust and efficient software solutions.
+                A curated collection of my past work, projects, and technical journey.
               </p>
 
               <div className="grid grid-cols-2 gap-6 mb-8">
