@@ -187,7 +187,7 @@ export default function Hero() {
                   </svg>
                 </div>
 
-                <div>
+                <div className='mt-3'>
                   <h2 className="text-xl lg:text-3xl font-bold leading-tight mb-4 text-black transition-colors duration-500">
                     Intern <span  className={`text-[#00D4B4] group-hover:text-[#FF5A36]`}>experience</span>
                   </h2>
