@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const ACCENT = "#FF5A36";
 const ACCENT_ALT = "#00D4B4";
 const PAPER = "#ffffffff";
-const CREAM = "#f4a6efff";
+const CREAM = "#a6f4e2ff";
 
 export default function Hero() {
   const [loaded, setLoaded] = useState(false);
