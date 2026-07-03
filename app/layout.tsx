@@ -5,6 +5,14 @@ import LenisProvider from "@/components/providers/LenisProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+import type { Viewport } from "next";
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
@@ -30,15 +38,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="th" className={`${roboto.variable} ${italiana.variable}`}>
-      <body className="font-sans antialiased bg-white">
+      <body className="font-sans antialiased bg-white w-full overflow-x-hidden">
         <header className="h-16">
           <Navbar />
         </header>
         <LenisProvider>
           {children}
           <footer>
-          <Footer />
-        </footer>
+            {/* <Footer /> */}
+          </footer>
         </LenisProvider>
       </body>
     </html>

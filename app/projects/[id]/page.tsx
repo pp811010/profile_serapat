@@ -51,7 +51,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
   const gridColsClass = project.col === 1
     ? "grid-cols-1 md:grid-cols-3"
     : project.col === 2
-      ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
       : "grid-cols-1";
 
   const isMobile = project.platform === "mobile";
