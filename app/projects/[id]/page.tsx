@@ -48,14 +48,16 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     );
   }
 
-  const gridColsClass = project.col === 1
+  const isMobile = project.platform === "mobile";
+const isWeb = project.platform === "web";
+
+const gridColsClass = isMobile
+  ? "grid-cols-2 sm:grid-cols-3 lg:grid-cols-4"
+  : project.col === 1
     ? "grid-cols-1 md:grid-cols-3"
     : project.col === 2
       ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-2"
       : "grid-cols-1";
-
-  const isMobile = project.platform === "mobile";
-   const isWeb = project.platform === "web";
 
   return (
     <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10">

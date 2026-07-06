@@ -6,13 +6,6 @@ export default function Home() {
     <main className="relative min-h-screen bg-white w-full overflow-x-hidden">      
       <div className="relative z-10">
         <Hero />
-        
-        {/* <Experience /> */}
-         {/* <TechStack/> */}
-        {/* <Projects /> */}
-        
-       
-        {/* <Contact /> */}
       </div>
     </main>
   );

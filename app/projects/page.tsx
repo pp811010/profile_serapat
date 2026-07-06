@@ -88,19 +88,18 @@ export default function ProjectsPage() {
     return (
         <div className="h-[calc(100vh-4rem)] flex flex-col">
             <div className="max-w-[1400px] mx-auto flex flex-col flex-1 w-full mt-10">
-                {/* Header section - ไม่ยืด */}
+
                 <div className=" px-8 lg:px-14 flex-shrink-0  lg:mb-14 text-center flex items-center justify-center gap-2">
                     <h1 className="text-3xl font-medium ">Projects </h1>
                     <h1 className="text-xs font-bold px-5 py-1 rounded-xl bg-[#FF5A36] text-white">{projectsData.length} works</h1>
                 </div>
                 
-                {/* Scrollable area - เติบโตเต็มพื้นที่ที่เหลือ */}
                 <div className="flex flex-col items-start md:grid md:grid-cols-2 lg:grid-cols-4  flex-1 gap-6 pb-6 ">
                     {projectsData.map((item, i) => (
                         <Link key={i} href={`/projects/${item.id}`} className="cursor-pointer bg-white min-w-[30%]  p-6 rounded-lg border-1 border-gray-100 hover:border-gray-300 transition-colors group">
                             <div>
                         
-                            {/* Title with line indicator */}
+                            {/* Title */}
                             <div className="flex items-center gap-4 mb-6">
                                 <div className="w-[2px] h-[25px] bg-black group-hover:bg-gray-400 transition-colors"></div>
                                 <h1 className="text-lg font-medium text-black">{item.title}</h1>
