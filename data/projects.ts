@@ -330,7 +330,7 @@ export const projectsData: Record<string, Project> = {
   // 3. BitX
   "bitx": {
     id: "3",
-    title: "Bitx Cryptocurrency Paper Trading Platform",
+    title: "Cryptocurrency Trading Simulator Platform",
     subtitle: "แพลตฟอร์มจำลองการซื้อขายเหรียญคริปโต",
     author: "Serapat Ratanapachai",
     duration: "1 ปี",
@@ -627,7 +627,7 @@ export const projectsData: Record<string, Project> = {
     ],
     responsibilities: [
       "พัฒนาหน้าแสดงรายละเอียดงานเพื่อให้ Expert สามารถเข้าถึงข้อมูลงานจาก (Asker) ด้วย Next.js ",
-      "พัฒนาระบบส่งมอบงาน (Job Submission) พร้อมเชื่อมต่อการอัปโหลดและจัดเก็บไฟล์บน AWS S3",
+      "พัฒนาระบบส่งมอบงานเเละเชื่อมต่อการอัปโหลดและจัดเก็บไฟล์บน AWS S3",
       "พัฒนาฟีเจอร์จัดการข้อมูลสำหรับผู้ใช้งานฝั่ง Expert ด้วย Golang",
     ],
     highlights: [

@@ -24,7 +24,7 @@ const projectsData = [
   },
   {
     id: 3,
-    title: "BitX Cryptocurrency Paper Trading Platform",
+    title: "Cryptocurrency Trading Simulator Platform",
     description: "BitX เป็นแพลตฟอร์มจำลองการซื้อขาย Cryptocurrency",
     techs: ["Next.js","Tailwind CSS","Shadcn","Prisma.io","Supabase","Clerk","CoinGecko API","Stripe API"],
     image: "/projects/bitx/hero.png",
