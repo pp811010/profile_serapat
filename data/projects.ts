@@ -52,7 +52,7 @@ export const projectsData: Record<string, Project> = {
       "พัฒนา PostgreSQL Agent รวมถึงการ Testing และปรับปรุงความถูกต้องของการตอบคำถามด้วย Text-to-SQL ด้วย Benchmark และ LLM as a Judge",
     ],
     highlights: [
-      "Agentic RAG Engine พร้อม Reasoning Mode",
+      "รองรับ mode RAG (Fast Mode) เเละ Agentic RAG (Reasoning Mode)",
       "รองรับ Document, PostgreSQL, API Agent",
       "ระบบ Human Corrections ปรับปรุงความถูกต้อง",
       "รองรับหลาย LLM: GPT-4.1-mini, Gemini 2.5 Flash, DeepSeek V3.2",

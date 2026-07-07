@@ -98,14 +98,16 @@ const gridColsClass = isMobile
             </div>
 
             <div className="relative rounded-2xl overflow-hidden bg-chip border border-border group">
-              <Image
+             {id!="1"? (<Image
                 src={project.heroImage}
                 alt={project.title}
                 width={1200}
                 height={800}
                 className="w-full h-full object-cover max-h-[400px] lg:min-h-0"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
+              />):(
+                <iframe  className="w-full h-full" src="https://www.youtube.com/embed/2oWmN6SObWg?si=ebHLvLMerkuyvntT" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              )}
+              {/* <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" /> */}
             </div>
           </div>
         </div>

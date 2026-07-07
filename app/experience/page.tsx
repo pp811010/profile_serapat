@@ -82,7 +82,7 @@ export default function ExperiencePage() {
 
     return (
         <div className="min-h-screen  pb-12 lg:pt-10">
-            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12  lg:gap-2 flex flex-col ">
+            <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12  lg:gap-2 flex flex-col ">
                  <div className="mt-3">
                         <h4 className="font-bold text-3xl">Software Developer Intern</h4>
                         <p className="text-gray-700 text-lg">@Datapro Computer Systems Co., Ltd. | Bangkok, Thailand </p>
