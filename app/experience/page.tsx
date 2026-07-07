@@ -96,7 +96,7 @@ export default function ExperiencePage() {
                    
                     <div>
                         <h4 className="font-medium text-base lg:text-lg">Overview</h4>
-                        <p className="text-gray-700 text-sm lg:text-base"> Transform ระบบประกันภัย TPA จากสถาปัตยกรรม Legacy สู่ Modern Full-Stack Platform</p>
+                        <p className="text-gray-700 text-xs lg:text-base"> Transform ระบบประกันภัย TPA จากสถาปัตยกรรม Legacy สู่ Modern Full-Stack Platform</p>
                     </div>
                     <div className="flex flex-col gap-2">
                         <h4 className="font-medium text-base lg:text-lg">Tech Stack</h4>
@@ -137,7 +137,7 @@ export default function ExperiencePage() {
                                     </div>
                                     <div className="col-span-12 md:col-span-10">
                                         <h4 className="font-bold text-ink mb-2 text-lg">{item.title}</h4>
-                                        <p className="text-base text-muted leading-relaxed">{item.desc}</p>
+                                        <p className="text-sm lg:text-base text-muted leading-relaxed">{item.desc}</p>
                                     </div>
                                 </div>
                             ))}
