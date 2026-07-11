@@ -83,17 +83,17 @@ export default function ExperiencePage() {
     return (
         <div className="min-h-screen  pb-12 lg:pt-10">
             <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12  lg:gap-2 flex flex-col ">
-                 <div className="mt-3">
-                        <h4 className="font-bold text-3xl">Software Developer Intern</h4>
-                        <p className="text-gray-700 text-lg">@Datapro Computer Systems Co., Ltd. | Bangkok, Thailand </p>
-                        <p className="text-gray-500 text-lg">April – June 2025 · 3 months </p>
-                    </div>
+                <div className="mt-3">
+                    <h4 className="font-bold text-3xl">Software Developer Intern</h4>
+                    <p className="text-gray-700 text-lg">@Datapro Computer Systems Co., Ltd. | Bangkok, Thailand </p>
+                    <p className="text-gray-500 text-lg">April – June 2025 · 3 months </p>
+                </div>
 
                 <div className="">
-                    <ImageSlider images={images}/>
+                    <ImageSlider images={images} />
                 </div>
                 <div className="max-w-2lg mx-auto flex flex-col gap-7 shawdow-sm">
-                   
+
                     <div>
                         <h4 className="font-medium text-base lg:text-lg">Overview</h4>
                         <p className="text-gray-700 text-xs lg:text-base"> Transform ระบบประกันภัย TPA จากสถาปัตยกรรม Legacy สู่ Modern Full-Stack Platform</p>
@@ -113,17 +113,22 @@ export default function ExperiencePage() {
                         <div className=" border-t border-border">
                             {[
                                 {
-                                    num: "01",
-                                    title: "Incident Submodule Development",
-                                    desc: "พัฒนา Submodule Incident สำหรับจัดการข้อมูลเหตุการณ์การเคลมประกัน การรักษาพยาบาล และข้อมูลที่เกี่ยวข้อง โดยรับผิดชอบทั้งส่วน Frontend และ Backend",
+                                    "num": "01",
+                                    "title": "Incident Submodule Development",
+                                    "desc": "พัฒนาและดูแลระบบ Full-Stack Internal Web Application (Submodule Incident) ให้กับ BlueVenture Group ด้วย Next.js, Golang (Gin) และ MS SQL Server เพื่อสนับสนุนงานหลักด้าน TPA และธุรกิจประกันภัย"
                                 },
                                 {
-                                    num: "02",
-                                    title: "API Documentation & Testing",
-                                    desc: "จัดทำ API Documentation ด้วย Swagger เเละทำ Data Validation พร้อมทดสอบ RESTful APIs ",
+                                    "num": "02",
+                                    "title": "API Documentation & Testing",
+                                    "desc": "ออกแบบและวางระบบ Data Validation ทั้งฝั่ง Frontend และ Backend เพื่อลดความผิดพลาดของข้อมูล พร้อมทั้งจัดทำ API Documentation ด้วย Swagger ช่วยให้การเชื่อมต่อระหว่างบริการต่าง ๆ มีประสิทธิภาพ"
                                 },
                                 {
-                                    num: "03",
+                                    "num": "03",
+                                    "title": "Internal Team Workshop",
+                                    "desc": "ร่วมทำงานในทีมแบบ Agile/Scrum เพื่อส่งมอบฟีเจอร์ต่าง ๆ เข้าร่วมการวางแผนสปรินต์ ประชุมอัปเดตงานประจำวัน รีวิวโค้ด รวมถึงจัด Workshop ภายในทีมเกี่ยวกับหลักการทำงานของ Gin Framework, การออกแบบ RESTful APIs และการใช้งาน Validator V10"
+                                },
+                                {
+                                    num: "04",
                                     title: "Internal Team Workshop",
                                     desc: "Workshop ภายในทีมเกี่ยวกับหลักการทำงานของ Gin Framework การออกแบบ RESTful APIs และการใช้งาน Validator V10",
                                 },
