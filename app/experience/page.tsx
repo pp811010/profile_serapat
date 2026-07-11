@@ -124,8 +124,8 @@ export default function ExperiencePage() {
                                 },
                                 {
                                     "num": "03",
-                                    "title": "Internal Team Workshop",
-                                    "desc": "ร่วมทำงานในทีมแบบ Agile/Scrum เพื่อส่งมอบฟีเจอร์ต่าง ๆ เข้าร่วมการวางแผนสปรินต์ ประชุมอัปเดตงานประจำวัน รีวิวโค้ด รวมถึงจัด Workshop ภายในทีมเกี่ยวกับหลักการทำงานของ Gin Framework, การออกแบบ RESTful APIs และการใช้งาน Validator V10"
+                                    "title": "Team Collaboration",
+                                    "desc": "ร่วมทำงานในทีมแบบ Agile/Scrum เพื่อส่งมอบฟีเจอร์ต่าง ๆ เข้าร่วมการวางแผนสปรินต์ ประชุมอัปเดตงานประจำวัน รีวิวโค้ด"
                                 },
                                 {
                                     num: "04",
