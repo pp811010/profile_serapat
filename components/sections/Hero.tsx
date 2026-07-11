@@ -49,7 +49,7 @@ export default function Hero() {
               </span>
               <h2 className="text-2xl lg:text-3xl font-bold text-black leading-tight mb-4">
                 Technology Built Across{" "}
-                <span style={{ color: ACCENT }}>Frontend, Backend, Web & Mobile</span>
+                <span style={{ color: ACCENT }}>AI, Frontend, Backend, Web & Mobile</span>
               </h2>
               <p className="text-gray-600 text-sm leading-relaxed mb-8">
                 A curated collection of my past work, projects, and technical journey.
