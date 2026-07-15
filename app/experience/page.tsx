@@ -73,7 +73,8 @@ export default function ExperiencePage() {
         "Next.js",
         "Golang",
         "Gin Framework",
-        "PostgreSQL",
+        "SQL Server",
+        'MinIO',
         "RESTful API",
         "Swagger",
         "Docker",
@@ -115,7 +116,7 @@ export default function ExperiencePage() {
                                 {
                                     "num": "01",
                                     "title": "Incident Submodule Development",
-                                    "desc": "พัฒนาและดูแลระบบ Full-Stack Internal Web Application (Submodule Incident) ให้กับ BlueVenture Group ด้วย Next.js, Golang (Gin) และ MS SQL Server เพื่อสนับสนุนงานหลักด้าน TPA และธุรกิจประกันภัย"
+                                    "desc": "พัฒนาและดูแลระบบ Full-Stack Internal Web Application (Submodule Incident) ให้กับ BlueVenture Group ด้วย Next.js, Golang (Gin), MS SQL Server เเละ MinIO เพื่อสนับสนุนงานหลักด้าน TPA และธุรกิจประกันภัย"
                                 },
                                 {
                                     "num": "02",
