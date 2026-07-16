@@ -27,11 +27,11 @@ const STACK: Category[] = [
   {
     num: "02", 
     category: "Languages",
-    description: "Python, Golang, Java (OOP), TypeScript, JavaScript, Dart, HTML, CSS, C, C++, SQL",
+    description: "Python, Go, Java (OOP), TypeScript, JavaScript, Dart, HTML, CSS, C, C++, SQL",
     count: 11,
     techs: [
       { name: "Python", logo: "https://cdn.simpleicons.org/python" },
-      { name: "Golang", logo: "https://cdn.simpleicons.org/go" },
+      { name: "Go", logo: "https://cdn.simpleicons.org/go" },
       { name: "Java", logo: "https://cdn.simpleicons.org/openjdk" },
       { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
       { name: "JavaScript", logo: "https://cdn.simpleicons.org/javascript" },

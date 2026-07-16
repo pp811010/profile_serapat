@@ -46,7 +46,7 @@ const projectsData = [
     id: 5,
     title: "Expert Connect",
     description: "Expert Connect เป็นแพลตฟอร์มที่เชื่อมโยงผู้ถามกับผู้เชี่ยวชาญ",
-    techs: ["Next.js","Golang","PostgreSQL","AWS ECS Fargate","AWS RDS","AWS S3","AWS ALB","AWS WAF","GitHub Actions"],
+    techs: ["Next.js","Go","PostgreSQL","AWS ECS Fargate","AWS RDS","AWS S3","AWS ALB","AWS WAF","GitHub Actions"],
     image: "/projects/expert-connect/hero.jpg",
     role: "Full-Stack Dev",
     date: "Sep 2024",

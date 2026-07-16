@@ -640,7 +640,7 @@ export const projectsData: Record<string, Project> = {
     ],
     techStack: [
       "Next.js",
-      "Golang",
+      "Go",
       "PostgreSQL",
       "AWS ECS Fargate",
       "AWS RDS",

@@ -39,11 +39,11 @@ export default function RootLayout({
   return (
     <html lang="th" className={`${roboto.variable} ${italiana.variable}`}>
       <body className="font-sans antialiased bg-white w-full overflow-x-hidden">
-        <header className="h-16">
-          <Navbar />
-        </header>
+        <Navbar />
         <LenisProvider>
-          {children}
+          <main className="pt-16"> {/* Add this wrapper with padding-top */}
+            {children}
+          </main>
           <footer>
             {/* <Footer /> */}
           </footer>
