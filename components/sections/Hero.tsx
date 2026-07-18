@@ -1,516 +1,473 @@
-'use client';
+"use client";
 
+import { useMemo, useState } from "react";
+import { Search, Star, Phone, Mail } from "lucide-react";
+import VantaGlobeBackground from "@/components/VantaGlobeBackground";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const ACCENT = "#FF5A36";
-const ACCENT_ALT = "#00D4B4";
-const PAPER = "#ffffffff";
-const CREAM = "#a6f4e2ff";
+// -----------------------------------------------------------------------
+// This component renders the PAGE CONTENT only: hero banner, filter/search,
+// category tags, project grid, and footer — light theme.
+// It does NOT render the site nav — that lives in Navbar.jsx and should be
+// placed once in app/layout.tsx, above {children}. Do not import Navbar
+// here too, or the nav will render twice.
+// -----------------------------------------------------------------------
+
+const experienceProjects = [
+  {
+    id: "exp-1",
+    title: "TPA insurance internal web application - Data pro computer system",
+    description:
+      "พัฒนา Internal Web Application ให้ BlueVenture Group PCL แบบ Full-Stack รวม 4 Submodule พร้อมออกแบบระบบ Data Validation และจัดทำ API Docs ด้วย Swagger",
+    techs: [
+      "Next.js",
+      "Go",
+      "Gin Framework",
+      "SQL Server",
+      "MinIO",
+      "RESTful API",
+      "Swagger",
+      "Docker",
+      "Git",
+    ],
+    image: "/projects/dcs/21.jpg",
+    role: "Software Developer Intern",
+    date: "Apr 2025",
+    category: "Internship",
+    likes: 84,
+    views: 512,
+    pro: true,
+    link: "/experience",
+  },
+];
+
+const projectsData = [
+  {
+    id: "proj-1",
+    title: "Chatdio AI Chatbot Generator Platform (Senior Project)",
+    description:
+      "Chatdio แพลตฟอร์มสร้างเเละจัดการ chatbot รูปแบบ Agentic Retrieval-Augmented Generation",
+    techs: [
+      "Next.js",
+      "FastAPI",
+      "Agno Framework",
+      "PostgreSQL",
+      "pgvector",
+      "AWS S3",
+      "Tailwind CSS",
+      "Cohere Reranker",
+      "Embedded Model",
+    ],
+    image: "/projects/chatdio/Home.jpg",
+    role: "Full-Stack Dev",
+    date: "Jan 2025",
+    category: "Development",
+    likes: 231,
+    views: 1840,
+    pro: false,
+    link: "/projects/1",
+  },
+  {
+    id: "proj-2",
+    title: "Filmfolio Movie Recommendation Platform",
+    description:
+      "พัฒนา FilmFolio แพลตฟอร์มที่ช่วยให้ผู้ใช้งานค้นพบภาพยนตร์ที่น่าสนใจผ่านข้อมูล รีวิว และคะแนนจากชุมชนผู้ชมในที่เดียว",
+    techs: [
+      "React",
+      "Node.js",
+      "Express.js",
+      "MongoDB Atlas",
+      "AWS EC2",
+      "AWS S3",
+      "AWS VPC",
+      "Elastic Load Balancer (ELB)",
+    ],
+    image: "/projects/filmfolio/hero.jpg",
+    role: "Frontend Developer",
+    date: "Dec 2024",
+    category: "Development",
+    likes: 156,
+    views: 980,
+    pro: false,
+    link: "/projects/2",
+  },
+  {
+    id: "proj-3",
+    title: "Cryptocurrency Trading Simulator Platform",
+    description: "BitX เป็นแพลตฟอร์มจำลองการซื้อขาย Cryptocurrency",
+    techs: [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn",
+      "Prisma.io",
+      "Supabase",
+      "Clerk",
+      "CoinGecko API",
+      "Stripe API",
+    ],
+    image: "/projects/bitx/hero.png",
+    role: "Full-Stack Dev",
+    date: "Nov 2024",
+    category: "Product",
+    likes: 119,
+    views: 626,
+    pro: false,
+    link: "/projects/3",
+  },
+  {
+    id: "proj-4",
+    title: "MuMood Review Your Vibe, Discover Your Sound",
+    description:
+      "MuMood แพลตฟอร์ม Community แลกเปลี่ยนความคิดเห็นเกี่ยวกับเพลงได้อย่างเต้มที่",
+    techs: [
+      "Flutter",
+      "Dart",
+      "FastAPI",
+      "Python",
+      "PostgreSQL",
+      "SQLAlchemy",
+      "Pydantic",
+      "Spotify API",
+      "Deezer API",
+    ],
+    image: "/projects/mumood/hero.jpg",
+    role: "Full-Stack Dev",
+    date: "Oct 2024",
+    category: "Development",
+    likes: 98,
+    views: 540,
+    pro: false,
+    link: "/projects/4",
+  },
+  {
+    id: "proj-5",
+    title: "Expert Connect",
+    description: "Expert Connect เป็นแพลตฟอร์มที่เชื่อมโยงผู้ถามกับผู้เชี่ยวชาญ",
+    techs: [
+      "Next.js",
+      "Go",
+      "PostgreSQL",
+      "AWS ECS Fargate",
+      "AWS RDS",
+      "AWS S3",
+      "AWS ALB",
+      "AWS WAF",
+      "GitHub Actions",
+    ],
+    image: "/projects/expert-connect/hero.jpg",
+    role: "Full-Stack Dev",
+    date: "Sep 2024",
+    category: "Development",
+    likes: 143,
+    views: 771,
+    pro: false,
+    link: "/projects/5",
+  },
+  {
+    id: "proj-6",
+    title: "Sport Management System",
+    description: "ระบบบริหารจัดการสนามกีฬาและอุปกรณ์ภายในมหาวิทยาลัย",
+    techs: ["HTML", "Tailwind CSS", "JavaScript", "Django", "PostgreSQL"],
+    image:
+      "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?q=80&w=1170&auto=format&fit=crop",
+    role: "Full-Stack Dev",
+    date: "Aug 2024",
+    category: "Product",
+    likes: 76,
+    views: 402,
+    pro: false,
+    link: "/projects/6",
+  },
+  {
+    id: "proj-7",
+    title: "Omakase Restaurant Management System",
+    description:
+      "ระบบจัดการร้านอาหาร Omakase ครอบคลุมการจองโต๊ะ การสั่งอาหาร และการบริหารภายในร้าน",
+    techs: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Tailwind CSS",
+      "Bootstrap 5",
+      "Chart.js",
+      "PHP",
+      "SQLite",
+    ],
+    image: "/projects/omakase/hero.jpg",
+    role: "Full-Stack Dev",
+    date: "Jul 2024",
+    category: "Development",
+    likes: 61,
+    views: 355,
+    pro: false,
+    link: "/projects/7",
+  },
+  {
+    id: "proj-8",
+    title: "Su Clothes - Clothing Store Management System",
+    description:
+      "Desktop Application สำหรับจัดการร้านค้าเสื้อผ้า ประยุกต์ใช้หลักการ OOP",
+    techs: ["Java", "Object-Oriented Programming (OOP)", "Java Swing"],
+    image: "/projects/suclothes/hero.jpg",
+    role: "Java Developer",
+    date: "Jun 2024",
+    category: "Design",
+    likes: 47,
+    views: 289,
+    pro: false,
+    link: "/projects/8",
+  },
+];
+
+const allEntries = [...experienceProjects, ...projectsData];
+
+// Unique tech stack list, derived from every project's `techs` array —
+// used to let the user filter by the language/framework they want to see.
+const normalizeTech = (tech: string) => tech.startsWith("AWS") ? "AWS" : tech;
+
+// Techs people actually click on most, in the order they should appear.
+// Anything not listed here falls back to alphabetical order after these.
+const POPULAR_TECH_ORDER = [
+  "Next.js",
+  "React",
+  "TypeScript",
+  "JavaScript",
+  "Tailwind CSS",
+  "Go",
+  "FastAPI",
+  "Python",
+  "Node.js",
+  "AWS",
+  "Docker",
+  "PostgreSQL",
+];
+
+function sortTechTagsByPopularity(tags: string[]) {
+  return [...tags].sort((a, b) => {
+    const aIdx = POPULAR_TECH_ORDER.indexOf(a);
+    const bIdx = POPULAR_TECH_ORDER.indexOf(b);
+    const aRank = aIdx === -1 ? POPULAR_TECH_ORDER.length : aIdx;
+    const bRank = bIdx === -1 ? POPULAR_TECH_ORDER.length : bIdx;
+    if (aRank !== bRank) return aRank - bRank;
+    if (a < b) return -1;
+if (a > b) return 1;
+return 0;
+  });
+}
+
+const TECH_TAGS = sortTechTagsByPopularity(
+  Array.from(new Set(allEntries.flatMap((item) => item.techs.map(normalizeTech))))
+);
+
+// Buckets that rank techs from "primary frontend framework" down to
+// "backend / infra / misc", so each card shows its stack in a sensible order.
+const TECH_RANK_BUCKETS = [
+  ["Next.js", "React", "Vue", "Angular", "Flutter", "Dart", "HTML", "CSS", "JavaScript", "TypeScript", "Tailwind CSS", "Bootstrap 5", "Shadcn"],
+  ["FastAPI", "Go", "Gin Framework", "Node.js", "Express.js", "Django", "PHP", "Java", "Java Swing", "Python", "Agno Framework"],
+  ["RESTful API", "Swagger", "GraphQL"],
+  ["PostgreSQL", "SQL Server", "MongoDB Atlas", "SQLite", "Supabase", "pgvector"],
+  ["Docker", "Git", "GitHub Actions", "MinIO", "Elastic Load Balancer (ELB)", "Prisma.io", "Clerk", "AWS S3", "AWS EC2", "AWS VPC", "AWS ECS Fargate", "AWS RDS", "AWS ALB", "AWS WAF"],
+];
+
+function getTechRank(tech: string) {
+  const idx = TECH_RANK_BUCKETS.findIndex((bucket) => bucket.includes(tech));
+  return idx === -1 ? TECH_RANK_BUCKETS.length : idx;
+}
+
+function sortTechsFrontToBack(techs: string[]) {
+  return [...techs].sort((a, b) => getTechRank(a) - getTechRank(b));
+}
+
+const SEARCH_PILLS = ["Projects", "People", "Assets", "Images"];
+
+// -----------------------------------------------------------------------
+// Component
+// -----------------------------------------------------------------------
 
 export default function Hero() {
-  const [loaded, setLoaded] = useState(false);
-  const [showIntro, setShowIntro] = useState(true);
+  const [activeTag, setActiveTag] = useState("All");
+  const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    // เริ่ม animate เนื้อหาหลักเล็กน้อยก่อนที่ intro จะหายไปสนิท
-    const t1 = setTimeout(() => setLoaded(true), 2300);
-    
-    // ลบ intro ออกจาก DOM หลัง animation จบ
-    const t2 = setTimeout(() => setShowIntro(false), 2700);
-    
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, []);
+  const filtered = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return allEntries.filter((item) => {
+      const matchesTag = activeTag === "All" || item.techs.some((tech)=>normalizeTech(tech)===activeTag);
+      const matchesQuery =
+        q === "" ||
+        item.title.toLowerCase().includes(q) ||
+        item.role.toLowerCase().includes(q) ||
+        item.techs.some((tech) => tech.toLowerCase().includes(q));
+      return matchesTag && matchesQuery;
+    });
+  }, [activeTag, query]);
 
   return (
-    <div
-      className="min-h-screen p-4 md:p-8 lg:px-6 relative"
-      style={{
-        backgroundColor: PAPER,
-        backgroundImage:
-          "radial-gradient(rgba(0,0,0,0.05) 1px, transparent 1px)",
-        backgroundSize: "20px 20px",
-      }}
-    >
-      {/* Inject Keyframes Animation */}
-      <style>{`
-        @keyframes introSequence {
-          0% {
-            clip-path: circle(0% at 50% 50%);
-            opacity: 1;
-          }
-          25% {
-            clip-path: circle(150% at 50% 50%);
-            opacity: 1;
-          }
-          60% {
-            clip-path: circle(150% at 50% 50%);
-            opacity: 1;
-          }
-          100% {
-            clip-path: circle(0% at 50% 50%);
-            opacity: 0;
-          }
-        }
+    <div className="bg-white text-gray-900 font-sans">
+      {/* ---------------------------------------------------------------- */}
+      {/* Hero Section                                                     */}
+      {/* ---------------------------------------------------------------- */}
+      <VantaGlobeBackground className="relative min-h-[70vh] flex items-end justify-center">
+        <div className="flex flex-col items-center gap-6 pb-20 px-6 text-center ">
+          <h1 className="max-w-4xl text-4xl md:text-6xl font-semibold uppercase tracking-wide text-black">
+            Hello, I'm Serapat Ratanapachai.
+          </h1>
+          <p className="max-w-xl text-xl text-gray-500">This space is dedicated to highlighting my past work and my entire journey in the software development career path</p>
+         
+        </div>
+      </VantaGlobeBackground>
 
-        @keyframes logoSequence {
-          0% {
-            transform: scale(0.8);
-            opacity: 0;
-            letter-spacing: 0.5em;
-          }
-          15% {
-            transform: scale(1);
-            opacity: 1;
-            letter-spacing: 0.3em;
-          }
-          50% {
-            transform: scale(1.05);
-            opacity: 1;
-            letter-spacing: 0.3em;
-          }
-          70% {
-            transform: scale(1.05);
-            opacity: 0;
-            letter-spacing: 0.3em;
-          }
-          100% {
-            transform: scale(0.8);
-            opacity: 0;
-            letter-spacing: 0.5em;
-          }
-        }
-      `}</style>
-
-      {/* Black Intro Overlay with PORTFOLIO Text */}
-      {showIntro && (
-        <div
-          aria-hidden="true"
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black"
-          style={{
-            animation: "introSequence 2.6s cubic-bezier(0.65, 0, 0.35, 1) forwards",
-          }}
-        >
-          <div
-            className="flex items-center justify-center text-white font-bold text-3xl md:text-5xl lg:text-6xl select-none"
-            style={{
-              animation: "logoSequence 2.6s cubic-bezier(0.65, 0, 0.35, 1) forwards",
-            }}
-          >
-            PORTFOLIO
+      {/* ---------------------------------------------------------------- */}
+      {/* Filter & Search Section                                         */}
+      {/* ---------------------------------------------------------------- */}
+      <section className="bg-gray-50 border-b border-gray-200">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 px-6 max-w-[1600px] mx-auto">
+          <div className="flex-1 w-full flex items-center gap-3 bg-white border border-gray-200 rounded-full px-4 py-2">
+            <Search size={16} className="text-gray-400 shrink-0" />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              type="text"
+              placeholder="Search by project name or tech..."
+              className="bg-transparent outline-none text-base flex-1 placeholder:text-gray-400 text-gray-900"
+            />
           </div>
         </div>
-      )}
 
-      <div className="max-w-[1600px] mx-auto bg-white rounded-[32px] overflow-hidden shadow-[0_30px_80px_-30px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
-
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-0 items-stretch">
-
-          {/* Column 1 - Profile */}
-          <div
-            className="p-8 lg:p-10 flex flex-col justify-between min-h-[500px] border-b md:border-r xl:border-b-0 xl:border-r border-gray-100"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.8s ease 0.3s'
-            }}
+        {/* Tech filter tags */}
+        <div className="flex gap-3 overflow-x-auto px-6 py-4 max-w-[1600px] mx-auto scrollbar-hide">
+          <button
+            onClick={() => setActiveTag("All")}
+            className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-colors ${
+              activeTag === "All"
+                ? "bg-gray-900 text-white border-gray-900"
+                : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
+            }`}
           >
-            <div>
-              <span
-                className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] mb-3 inline-block"
-                style={{ color: ACCENT }}
+            <Star size={13} />
+            All
+          </button>
+          {TECH_TAGS.map((tech) => {
+            const active = activeTag === tech;
+            return (
+              <button
+                key={tech}
+                onClick={() => setActiveTag(tech)}
+                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm cursor-pointer transition-colors ${
+                  active
+                    ? "bg-gray-900 text-white border-gray-900"
+                    : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
+                }`}
               >
-                // portfolio
-              </span>
-              <h2 className="text-2xl lg:text-3xl font-bold text-black leading-tight mb-4">
-                Technology Built Across{" "}
-                <span style={{ color: ACCENT }}>AI, Frontend, Backend, Web & Mobile</span>
-              </h2>
-              <p className="text-gray-600 text-sm leading-relaxed mb-8">
-                A curated collection of my past work, projects, and technical journey.
-              </p>
-
-              <div className="grid grid-cols-2 gap-6 mb-8">
-                <div>
-                  <p className="text-3xl font-bold text-black mb-1">36</p>
-                  <div className="w-6 h-[3px] rounded-full mb-2" style={{ backgroundColor: ACCENT }} />
-                  <p className="text-xs text-gray-500">Tech Stacks & Tools</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3 pt-6 border-t border-gray-100">
-              <img
-                src="/profile2.jpg"
-                alt="Serapat Ratanapachai"
-                className="w-12 h-12 rounded-full object-cover ring-2 ring-offset-2"
-                style={{ ['--tw-ring-color' as any]: `${ACCENT_ALT}66` }}
-              />
-              <div>
-                <p className="text-sm font-semibold text-black">Serapat Ratanapachai</p>
-                <p className="text-xs text-gray-500">Full-Stack Developer</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Column 3 - Intern Experience - Hover: ขาว → ครีม */}
-          <Link href="/experience" className="group">
-            <div
-              className="overflow-hidden relative h-full p-8 lg:p-10 flex flex-col justify-between min-h-[500px] bg-white cursor-pointer border-b md:border-b-0 md:border-r xl:border-b-0 xl:border-r border-gray-100
-                         ring-1 ring-transparent
-                         transition-all duration-500 ease-out
-                         group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_-15px_rgba(245,230,211,0.6)] group-hover:ring-1"
-              style={{
-                opacity: loaded ? 1 : 0,
-                transform: loaded ? 'translateY(0)' : 'translateY(20px)',
-                transition: 'all 0.8s ease 0.5s',
-                ['--tw-ring-color' as any]: ACCENT_ALT,
-              }}
-            >
-              {/* Overlay สีครีม - slide จากล่างขึ้นบน */}
-              <div
-                className="absolute inset-0 transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0 z-0"
-                style={{ backgroundColor: CREAM }}
-              />
-
-              {/* Content wrapper - z-10 เพื่อให้ content อยู่ด้านบน overlay */}
-              <div className="relative z-10 flex flex-col justify-between h-full">
-                <div
-                  className="absolute top-[-24px] right-[-15px] flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold
-                             transition-transform duration-300"
-                  style={{ backgroundColor: ACCENT_ALT, color: "#032420" }}
-                >
-                  View details
-                  <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-
-                <div className='mt-3'>
-                  <h2 className="text-xl lg:text-3xl font-bold leading-tight mb-4 text-black transition-colors duration-500">
-                    Intern <span className={`text-[#00D4B4] group-hover:text-[#FF5A36]`}>experience</span>
-                  </h2>
-                  <p className="text-sm leading-relaxed mb-8 text-gray-600 group-hover:text-gray-800 transition-colors duration-500">
-                    พัฒนาแอปพลิเคชัน Full-Stack ด้วย <span className="text-black font-bold">Next.js</span> และ <span className="text-black font-bold">Go</span> ให้กับ <span className="text-black font-bold">BlueVenture Group PCL</span>ในการทำ TPA เพื่อปรับปรุงและ transform ระบบ application ภายในสู่ Modern Full-Stack Platform
-                  </p>
-
-                  <div className="mb-8">
-                    <p className="text-2xl font-bold mb-1 text-black transition-colors duration-500 ">Software Developer intern</p>
-                    <p className="text-sm text-gray-500 group-hover:text-gray-700  transition-colors duration-500">Datapro Computer Systems Co., Ltd</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-6 border-t border-gray-100 group-hover:border-black/15 transition-colors duration-500">
-                  <div>
-                    <p className="text-xs text-gray-500 group-hover:text-gray-700 transition-colors duration-500">
-                      Bangkok, Thailand
-                    </p>
-                  </div>
-                  <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: ACCENT_ALT }}
-                  >
-                    <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          {/* Column 2 - Black Card (All Projects) - Hover: ดำ → ครีม */}
-          <Link href="/projects" className="group">
-            <div
-              className="relative h-full bg-black p-8 lg:p-10 flex flex-col justify-between min-h-[500px] border-b md:border-b xl:border-b-0 xl:border-r border-gray-800 cursor-pointer
-                         ring-1 ring-transparent overflow-hidden
-                         transition-all duration-500 ease-out
-                         group-hover:-translate-y-2 group-hover:ring-1"
-              style={{
-                opacity: loaded ? 1 : 0,
-                transform: loaded ? 'translateY(0)' : 'translateY(50px)',
-                transition: 'all 0.8s ease 0.4s',
-                ['--tw-ring-color' as any]: ACCENT_ALT,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = `0 20px 45px -12px ${CREAM}88`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-              }}
-            >
-              {/* Overlay สีครีม - slide จากล่างขึ้นบน */}
-              <div
-                className="absolute inset-0 transition-transform duration-500 ease-out translate-y-full group-hover:translate-y-0 z-0"
-                style={{ backgroundColor: CREAM }}
-              />
-
-              {/* Content wrapper - z-10 เพื่อให้ content อยู่ด้านบน overlay */}
-              <div className="relative z-10 flex flex-col justify-between h-full">
-                <div
-                  className="absolute right-5 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold
-                             transition-transform duration-300 "
-                  style={{ backgroundColor: ACCENT_ALT, color: "#032420" }}
-                >
-                  View projects
-                  <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-
-                <div className="flex-1 flex flex-col items-center justify-center gap-4">
-                  <span className="text-[#FF5A36] group-hover:text-black/50 text-[11px] font-mono font-semibold uppercase tracking-[0.25em] transition-colors duration-500">
-                    Explore
-                  </span>
-
-                  <p className="text-white group-hover:text-black text-4xl lg:text-4xl font-bold text-center leading-[0.95] transition-colors duration-500">
-                    All
-                    <br />Projects
-                  </p>
-
-                  <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center mt-1
-                               transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110"
-                    style={{
-                      border: `1px solid ${ACCENT_ALT}66`,
-                      backgroundColor: `${ACCENT_ALT}1A`,
-                    }}
-                  >
-                    <svg className="w-4 h-4 text-white group-hover:text-black transition-colors duration-500" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <div className="aspect-video rounded-lg overflow-hidden bg-gray-800 ring-1 ring-white/10 transition-all duration-500">
-                    <img
-                      src="https://cdn.macstories.net/002/nova-1615919427833.png"
-                      alt="Video thumbnail"
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Link>
-
-          {/* Column 4 - Image Card */}
-          <div
-            className="flex relative min-h-[500px] border-b md:border-b-0 xl:border-b-0 border-gray-100 overflow-hidden"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateY(0)' : 'translateY(20px)',
-              transition: 'all 0.8s ease 0.6s'
-            }}
-          >
-            <img
-              src="/profile2.jpg"
-              alt="Digital campaign"
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{
-                background: `linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(10,5,5,0.55) 45%, transparent 80%)`,
-              }}
-            />
-            <span
-              className="absolute top-5 left-5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full"
-              style={{ backgroundColor: `${ACCENT}E6`, color: "white" }}
-            >
-              // about
-            </span>
-
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
-              <h3 className="text-2xl font-bold text-white mb-3 leading-tight">
-                About me
-              </h3>
-              <p className="text-white/80 text-sm leading-relaxed">
-                Hello, I am Serapat Ratanapachai (Popo). It is a pleasure to welcome you to my portfolio.
-              </p>
-            </div>
-          </div>
-
+                {tech}
+              </button>
+            );
+          })}
         </div>
+      </section>
 
-        {/* Bottom Section - Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border-t border-gray-100">
+      {/* ---------------------------------------------------------------- */}
+      {/* Portfolio Project Grid                                           */}
+      {/* ---------------------------------------------------------------- */}
+      <section className=" px-6 lg:px-10 pb-12 pt-10 max-w-[1600px] mx-auto">
+        <h3 className="text-4xl font-medium mb-8 text-gray-900">My Portfolio</h3>
 
-          {/* Left Column - Typography */}
-          <div
-            className="p-8 lg:p-16 flex flex-col justify-top border-b lg:border-b-0 lg:border-r border-gray-100"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateX(0)' : 'translateX(-20px)',
-              transition: 'all 0.8s ease 0.1s'
-            }}
-          >
-            <h1 className="text-5xl lg:text-7xl font-bold text-black leading-[0.9] tracking-tight">
-              <br />
-              <span className="">
-                Overview
-              </span>
-            </h1>
+        {filtered.length === 0 ? (
+          <p className="text-base text-gray-500">No projects match "{query}".</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filtered.map((item) => (
+              <ProjectCard key={item.id} project={item} />
+            ))}
           </div>
+        )}
+      </section>
 
-          {/* Right Column - Education & Contact List */}
-          <div
-            className="p-8 lg:p-16 flex flex-col justify-center gap-6"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? 'translateX(0)' : 'translateX(20px)',
-              transition: 'all 0.8s ease 0.2s'
-            }}
-          >
-            {/* Education Entry */}
-            <article className="flex flex-col gap-6 p-4 rounded-xl border-l-2 border-transparent">
-              <div className="font-bold text-lg text-black">
-                <span>Education</span>
-              </div>
-              <div className="flex ">
-                <img
-                  src="https://www.reg.kmitl.ac.th/information/assets/img/logo.gif"
-                  alt="KMITL logo"
-                  className="w-32 h-32 object-contain rounded-full"
-                />
-                <div className="flex-1 flex flex-col items-start justify-center ml-2">
-                  <h3 className="text-lg font-bold text-black leading-tight">
-                    King Mongkut's University of Technology Ladkrabang
-                  </h3>
-                  <p className="text-sm text-gray-500">Bachelor's of Science in Information Technology</p>
-                  <p className="text-sm text-gray-500">GPAX : 3.16 / 4.00 </p>
-                </div>
-              </div>
-            </article>
-
-            {/* Contact Card */}
-            <div className="p-4 rounded-xl">
-              <h3 className="text-lg font-bold text-black leading-tight mb-4">
-                Contact
-              </h3>
-              <div className="flex flex-col gap-3">
-                {/* Email */}
-                <a
-                  href="mailto:serapat.rata@gmail.com"
-                  className="group/row flex items-center gap-4 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors duration-300"
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center bg-gray-100"
-                  >
-                    <svg className="w-5 h-5" style={{ color: ACCENT }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-mono text-gray-500 uppercase tracking-wider">Email</p>
-                    <p className="text-sm font-semibold text-black">serapat.rata@gmail.com</p>
-                  </div>
-                </a>
-
-                {/* Phone */}
-                <a
-                  href="tel:0902327959"
-                  className="group/row flex items-center gap-4 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors duration-300"
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center bg-gray-100"
-                  >
-                    <svg className="w-5 h-5" style={{ color: ACCENT_ALT }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 5a2 2 0 012-2h2.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.05 11.05 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-mono text-gray-500 uppercase tracking-wider">Phone</p>
-                    <p className="text-sm font-semibold text-black">090-232-7959</p>
-                  </div>
-                </a>
-
-                {/* GitHub */}
-                <a
-                  href="https://github.com/pp811010"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/row flex items-center gap-4 p-2 -mx-2 rounded-lg hover:bg-gray-50 transition-colors duration-300"
-                >
-                  <div
-                    className="w-10 h-10 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: "#0000000D" }}
-                  >
-                    <svg className="w-5 h-5 text-black" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.19 1.76 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 015.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.77.11 3.06.74.8 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.07.78 2.15 0 1.55-.01 2.8-.01 3.18 0 .3.21.66.79.55A10.51 10.51 0 0023.5 12c0-6.35-5.15-11.5-11.5-11.5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-[11px] font-mono text-gray-500 uppercase tracking-wider">GitHub</p>
-                    <p className="text-sm font-semibold text-black">github.com/pp811010</p>
-                  </div>
-                </a>
-              </div>
-            </div>
+      {/* ---------------------------------------------------------------- */}
+      {/* Footer                                                           */}
+      {/* ---------------------------------------------------------------- */}
+      <footer className="bg-gray-50 border-t border-gray-200">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 px-6 py-6 max-w-[1600px] mx-auto text-xs text-gray-500">
+          <div className="flex flex-wrap items-center gap-5">
+            <a
+              href="tel:0902327959"
+              className="flex items-center gap-1.5 hover:text-gray-800 transition-colors"
+            >
+              <Phone size={14} />
+              090-232-7959
+            </a>
+            <a
+              href="mailto:serapat_rata@gmail.com"
+              className="flex items-center gap-1.5 hover:text-gray-800 transition-colors"
+            >
+              <Mail size={14} />
+              serapat_rata@gmail.com
+            </a>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   );
 }
 
-<style>{`
-  @keyframes introSequence {
-    0% {
-      clip-path: circle(0% at 50% 50%);
-      opacity: 1;
-    }
-    25% {
-      clip-path: circle(150% at 50% 50%);
-      opacity: 1;
-    }
-    60% {
-      clip-path: circle(150% at 50% 50%);
-      opacity: 1;
-    }
-    100% {
-      clip-path: circle(0% at 50% 50%);
-      opacity: 0;
-    }
-  }
+// -----------------------------------------------------------------------
+// Project Card
+// -----------------------------------------------------------------------
 
-  @keyframes logoSequence {
-    0% {
-      transform: scale(0.8);
-      opacity: 0;
-      letter-spacing: 0.5em;
-    }
-    15% {
-      transform: scale(1);
-      opacity: 1;
-      letter-spacing: 0.3em;
-    }
-    50% {
-      transform: scale(1.05);
-      opacity: 1;
-      letter-spacing: 0.3em;
-    }
-    70% {
-      transform: scale(1.05);
-      opacity: 0;
-      letter-spacing: 0.3em;
-    }
-    100% {
-      transform: scale(0.8);
-      opacity: 0;
-      letter-spacing: 0.5em;
-    }
-  }
+function ProjectCard({ project }) {
+  const sortedTechs = sortTechsFrontToBack(project.techs || []);
 
-  /* บังคับซ่อน navbar ขณะ intro ทำงาน */
-  .intro-active nav {
-    visibility: hidden !important;
-    opacity: 0 !important;
-  }
-`}
-</style>
+  return (
+    <Link
+      href={project.link || "#"}
+      className="group block cursor-pointer ring ring-gray-100 hover:ring-gray-300 p-3 rounded-xl "
+    >
+      <div className="relative aspect-[4/3] rounded-md overflow-hidden bg-gray-100">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+          onError={(e) => {
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop";
+          }}
+        />
+      </div>
+
+      <div className="mt-3">
+        <div className="min-w-0">
+          <p className="text-lg font-bold text-gray-900 break-words ">
+            {project.title}
+          </p>
+          <div className="flex items-center gap-1.5 mt-1">
+            <span className="text-sm text-gray-500 line-clamp-1">
+              {project.role}
+            </span>
+            {project.pro && (
+              <span className="text-[10px] font-bold text-white bg-blue-600 rounded px-1.5 py-0.5 shrink-0">
+                Work Experience
+              </span>
+            )}
+          </div>
+        </div>
+
+        {sortedTechs.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {sortedTechs.slice(0, 3).map((tech) => (
+              <span
+                key={tech}
+                className="text-xs text-gray-600 bg-gray-100 border border-gray-200 rounded-full px-2 py-0.5"
+              >
+                {tech}
+              </span>
+            ))}
+            {sortedTechs.length > 3 && (
+              <span className="text-xs text-gray-400 px-1 py-0.5">
+                +{sortedTechs.length - 3}
+              </span>
+            )}
+          </div>
+        )}
+      </div>
+    </Link>
+  );
+}

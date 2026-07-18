@@ -29,8 +29,6 @@ export default function Navbar() {
 
   const navLinks = [
     { pathName: "/", id: "home", name : "Home" },
-    { pathName: "/projects", id: "projects", name : "Projects" },
-    { pathName: "/experience", id: "experience", name : "Experience" },
   ];
 
   return (

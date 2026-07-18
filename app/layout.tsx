@@ -41,7 +41,7 @@ export default function RootLayout({
       <body className="font-sans antialiased bg-white w-full overflow-x-hidden">
         <Navbar />
         <LenisProvider>
-          <main className="pt-16"> {/* Add this wrapper with padding-top */}
+          <main> {/* Add this wrapper with padding-top */}
             {children}
           </main>
           <footer>
