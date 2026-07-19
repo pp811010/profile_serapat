@@ -354,7 +354,7 @@ export default function Hero() {
 
 
       <section className=" px-6 lg:px-10 pb-12 pt-10 max-w-[1600px] mx-auto">
-        <h3 className="text-5xl font-bold mb-8 lg:mt-10 text-white [-webkit-text-stroke:1.5px_#197c57] text-right">My Portfolio</h3>
+        <h3 className="text-5xl font-bold mb-8 lg:mt-10 text-white [-webkit-text-stroke:1.5px_#197c57] text-center lg:text-right">My Portfolio</h3>
 
         {filtered.length === 0 ? (
           <p className="text-base text-gray-500">No projects match "{query}".</p>
