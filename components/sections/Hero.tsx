@@ -2,16 +2,10 @@
 
 import { useMemo, useState } from "react";
 import { Search, Star, Phone, Mail } from "lucide-react";
-import VantaGlobeBackground from "@/components/VantaGlobeBackground";
+import VantaFogBackground from "@/components/VantaGlobeBackground";
 import Link from "next/link";
 
-// -----------------------------------------------------------------------
-// This component renders the PAGE CONTENT only: hero banner, filter/search,
-// category tags, project grid, and footer — light theme.
-// It does NOT render the site nav — that lives in Navbar.jsx and should be
-// placed once in app/layout.tsx, above {children}. Do not import Navbar
-// here too, or the nav will render twice.
-// -----------------------------------------------------------------------
+
 
 const experienceProjects = [
   {
@@ -93,29 +87,6 @@ const projectsData = [
   },
   {
     id: "proj-3",
-    title: "Cryptocurrency Trading Simulator Platform",
-    description: "BitX เป็นแพลตฟอร์มจำลองการซื้อขาย Cryptocurrency",
-    techs: [
-      "Next.js",
-      "Tailwind CSS",
-      "Shadcn",
-      "Prisma.io",
-      "Supabase",
-      "Clerk",
-      "CoinGecko API",
-      "Stripe API",
-    ],
-    image: "/projects/bitx/hero.png",
-    role: "Full-Stack Dev",
-    date: "Nov 2024",
-    category: "Product",
-    likes: 119,
-    views: 626,
-    pro: false,
-    link: "/projects/3",
-  },
-  {
-    id: "proj-4",
     title: "MuMood Review Your Vibe, Discover Your Sound",
     description:
       "MuMood แพลตฟอร์ม Community แลกเปลี่ยนความคิดเห็นเกี่ยวกับเพลงได้อย่างเต้มที่",
@@ -137,10 +108,10 @@ const projectsData = [
     likes: 98,
     views: 540,
     pro: false,
-    link: "/projects/4",
+    link: "/projects/3",
   },
   {
-    id: "proj-5",
+    id: "proj-4",
     title: "Expert Connect",
     description: "Expert Connect เป็นแพลตฟอร์มที่เชื่อมโยงผู้ถามกับผู้เชี่ยวชาญ",
     techs: [
@@ -160,6 +131,29 @@ const projectsData = [
     category: "Development",
     likes: 143,
     views: 771,
+    pro: false,
+    link: "/projects/4",
+  },
+  {
+    id: "proj-5",
+    title: "Cryptocurrency Trading Simulator Platform",
+    description: "BitX เป็นแพลตฟอร์มจำลองการซื้อขาย Cryptocurrency",
+    techs: [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn",
+      "Prisma.io",
+      "Supabase",
+      "Clerk",
+      "CoinGecko API",
+      "Stripe API",
+    ],
+    image: "/projects/bitx/hero.png",
+    role: "Full-Stack Dev",
+    date: "Nov 2024",
+    category: "Product",
+    likes: 119,
+    views: 626,
     pro: false,
     link: "/projects/5",
   },
@@ -219,14 +213,10 @@ const projectsData = [
   },
 ];
 
-const allEntries = [...experienceProjects, ...projectsData];
+const allEntries = [...experienceProjects, ...projectsData].filter(Boolean);
 
-// Unique tech stack list, derived from every project's `techs` array —
-// used to let the user filter by the language/framework they want to see.
 const normalizeTech = (tech: string) => tech.startsWith("AWS") ? "AWS" : tech;
 
-// Techs people actually click on most, in the order they should appear.
-// Anything not listed here falls back to alphabetical order after these.
 const POPULAR_TECH_ORDER = [
   "Next.js",
   "React",
@@ -250,8 +240,8 @@ function sortTechTagsByPopularity(tags: string[]) {
     const bRank = bIdx === -1 ? POPULAR_TECH_ORDER.length : bIdx;
     if (aRank !== bRank) return aRank - bRank;
     if (a < b) return -1;
-if (a > b) return 1;
-return 0;
+    if (a > b) return 1;
+    return 0;
   });
 }
 
@@ -259,8 +249,6 @@ const TECH_TAGS = sortTechTagsByPopularity(
   Array.from(new Set(allEntries.flatMap((item) => item.techs.map(normalizeTech))))
 );
 
-// Buckets that rank techs from "primary frontend framework" down to
-// "backend / infra / misc", so each card shows its stack in a sensible order.
 const TECH_RANK_BUCKETS = [
   ["Next.js", "React", "Vue", "Angular", "Flutter", "Dart", "HTML", "CSS", "JavaScript", "TypeScript", "Tailwind CSS", "Bootstrap 5", "Shadcn"],
   ["FastAPI", "Go", "Gin Framework", "Node.js", "Express.js", "Django", "PHP", "Java", "Java Swing", "Python", "Agno Framework"],
@@ -278,12 +266,6 @@ function sortTechsFrontToBack(techs: string[]) {
   return [...techs].sort((a, b) => getTechRank(a) - getTechRank(b));
 }
 
-const SEARCH_PILLS = ["Projects", "People", "Assets", "Images"];
-
-// -----------------------------------------------------------------------
-// Component
-// -----------------------------------------------------------------------
-
 export default function Hero() {
   const [activeTag, setActiveTag] = useState("All");
   const [query, setQuery] = useState("");
@@ -291,7 +273,7 @@ export default function Hero() {
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     return allEntries.filter((item) => {
-      const matchesTag = activeTag === "All" || item.techs.some((tech)=>normalizeTech(tech)===activeTag);
+      const matchesTag = activeTag === "All" || item.techs.some((tech) => normalizeTech(tech) === activeTag);
       const matchesQuery =
         q === "" ||
         item.title.toLowerCase().includes(q) ||
@@ -303,23 +285,30 @@ export default function Hero() {
 
   return (
     <div className="bg-white text-gray-900 font-sans">
-      {/* ---------------------------------------------------------------- */}
-      {/* Hero Section                                                     */}
-      {/* ---------------------------------------------------------------- */}
-      <VantaGlobeBackground className="relative min-h-[70vh] flex items-end justify-center">
+
+
+
+      <VantaFogBackground
+        className="relative min-h-[70vh] flex items-end justify-center"
+        options={{
+          highlightColor: 0x8cffbf,
+          midtoneColor: 0x469f7e,
+          lowlightColor: 0xaff4c4,
+          blurFactor: 0.72,
+          speed: 2.20,
+          zoom: 0.90,
+        }}
+      >
         <div className="flex flex-col items-center gap-6 pb-20 px-6 text-center ">
           <h1 className="max-w-4xl text-4xl md:text-6xl font-semibold uppercase tracking-wide text-black">
             Hello, I'm Serapat Ratanapachai.
           </h1>
           <p className="max-w-xl text-xl text-gray-500">This space is dedicated to highlighting my past work and my entire journey in the software development career path</p>
-         
         </div>
-      </VantaGlobeBackground>
+      </VantaFogBackground>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* Filter & Search Section                                         */}
-      {/* ---------------------------------------------------------------- */}
-      <section className="bg-gray-50 border-b border-gray-200">
+
+      <section className="bg-gray-50 border-b border-gray-200 sticky top-0 z-20">
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 px-6 max-w-[1600px] mx-auto">
           <div className="flex-1 w-full flex items-center gap-3 bg-white border border-gray-200 rounded-full px-4 py-2">
             <Search size={16} className="text-gray-400 shrink-0" />
@@ -333,15 +322,14 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Tech filter tags */}
-        <div className="flex gap-3 overflow-x-auto px-6 py-4 max-w-[1600px] mx-auto scrollbar-hide">
+
+        <div className="flex gap-3 overflow-x-auto px-6 py-4 max-w-[1600px] mx-auto scrollbar">
           <button
             onClick={() => setActiveTag("All")}
-            className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-colors ${
-              activeTag === "All"
-                ? "bg-gray-900 text-white border-gray-900"
-                : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
-            }`}
+            className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-colors ${activeTag === "All"
+              ? "bg-gray-900 text-white border-gray-900"
+              : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
+              }`}
           >
             <Star size={13} />
             All
@@ -352,11 +340,10 @@ export default function Hero() {
               <button
                 key={tech}
                 onClick={() => setActiveTag(tech)}
-                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm cursor-pointer transition-colors ${
-                  active
-                    ? "bg-gray-900 text-white border-gray-900"
-                    : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
-                }`}
+                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm cursor-pointer transition-colors ${active
+                  ? "bg-gray-900 text-white border-gray-900"
+                  : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
+                  }`}
               >
                 {tech}
               </button>
@@ -365,11 +352,9 @@ export default function Hero() {
         </div>
       </section>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* Portfolio Project Grid                                           */}
-      {/* ---------------------------------------------------------------- */}
+
       <section className=" px-6 lg:px-10 pb-12 pt-10 max-w-[1600px] mx-auto">
-        <h3 className="text-4xl font-medium mb-8 text-gray-900">My Portfolio</h3>
+        <h3 className="text-5xl font-bold mb-8 lg:mt-10 text-white [-webkit-text-stroke:1.5px_#197c57] text-right">My Portfolio</h3>
 
         {filtered.length === 0 ? (
           <p className="text-base text-gray-500">No projects match "{query}".</p>
@@ -382,9 +367,7 @@ export default function Hero() {
         )}
       </section>
 
-      {/* ---------------------------------------------------------------- */}
-      {/* Footer                                                           */}
-      {/* ---------------------------------------------------------------- */}
+
       <footer className="bg-gray-50 border-t border-gray-200">
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 px-6 py-6 max-w-[1600px] mx-auto text-xs text-gray-500">
           <div className="flex flex-wrap items-center gap-5">
@@ -409,9 +392,7 @@ export default function Hero() {
   );
 }
 
-// -----------------------------------------------------------------------
-// Project Card
-// -----------------------------------------------------------------------
+
 
 function ProjectCard({ project }) {
   const sortedTechs = sortTechsFrontToBack(project.techs || []);

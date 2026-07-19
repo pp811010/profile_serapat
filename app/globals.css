@@ -16,8 +16,9 @@
   --font-sans: var(--font-roboto), system-ui, sans-serif;
   --font-italiana: var(--font-italiana), system-ui, sans-serif;
 }
-
-
+@utility text-shadow-* {
+  text-shadow: 2px 2px 4px var(--value);
+}
 
 
 .nav-bar {

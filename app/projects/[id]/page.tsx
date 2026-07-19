@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getProjectById } from "@/data/projects";
 import ImageCarousel from "@/components/ui/ImageCarousel";
 
-// ========== Icon Components ==========
+
 const icons: Record<string, React.ReactNode> = {
   engine: (
     <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
@@ -26,15 +26,14 @@ const icons: Record<string, React.ReactNode> = {
   ),
 };
 
-// icons that appear in some project data but had no matching svg before —
-// fall back to a generic dot so the badge still renders instead of showing nothing.
+
 const fallbackIcon = (
   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
     <circle cx="10" cy="10" r="4" />
   </svg>
 );
 
-/// ========== Main Component ==========
+
 export default async function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const project = getProjectById(id);
@@ -71,7 +70,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
     <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10">
       <div className="max-w-4xl mx-auto">
 
-        {/* ===== Media: video for the featured project, image carousel otherwise ===== */}
+
         {id === "1" ? (
           <div className="relative rounded-2xl overflow-hidden bg-chip border border-border aspect-video mb-8">
             <iframe
@@ -90,7 +89,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         )}
 
-        {/* ===== Header: title, role/status/platform, tech stack, repo link ===== */}
+
         <div className="mb-10">
           <div className="flex items-start justify-between gap-4 flex-wrap mb-4">
             <div className="flex items-center gap-3">
@@ -142,7 +141,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         </div>
 
-        {/* ===== About: what the project is and why it exists (short) ===== */}
+
         <div className="mb-10">
           <h2 className="text-lg font-bold text-gray-900 mb-3">เกี่ยวกับโปรเจกต์</h2>
           {project.description.slice(0, 2).map((para: string, index: number) => (
@@ -152,7 +151,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           ))}
         </div>
 
-        {/* ===== Key features (replaces the old separate "highlights" bullet list) ===== */}
+
         {project.features && project.features.length > 0 && (
           <div className="mb-10">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Key Features</h2>
@@ -177,7 +176,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         )}
 
-        {/* ===== My responsibilities (what I personally did — relevant for hiring) ===== */}
+
         {project.responsibilities && project.responsibilities.length > 0 && (
           <div className="mb-10">
             <h2 className="text-lg font-bold text-gray-900 mb-3">Responsibilities</h2>
@@ -192,7 +191,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
           </div>
         )}
 
-        {/* ===== Actors: who uses the system (kept short) ===== */}
+
         {project.actors && project.actors.length > 0 && (
           <div className="mb-4">
             <h2 className="text-lg font-bold text-gray-900 mb-4">Actors</h2>

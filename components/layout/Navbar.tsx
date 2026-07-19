@@ -28,13 +28,13 @@ export default function Navbar() {
  
 
   const navLinks = [
-    { pathName: "/", id: "home", name : "Home" },
+    { pathName: "/", id: "home", name : "All Projects" },
   ];
 
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300 ${
-         "bg-white backdrop-blur-md"
+         "bg-[#fds45] backdrop-blur-md"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 h-full flex items-center justify-between">

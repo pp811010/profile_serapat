@@ -327,138 +327,11 @@ export const projectsData: Record<string, Project> = {
     screenshotCount: 20,
   },
 
-  // 3. BitX
-  "bitx": {
-    id: "3",
-    title: "Cryptocurrency Trading Simulator Platform",
-    subtitle: "แพลตฟอร์มจำลองการซื้อขายเหรียญคริปโต",
-    author: "Serapat Ratanapachai",
-    duration: "1 ปี",
-    role: "Full Stack Developer",
-    col: 2,
-    status: "Completed",
-    liveUrl: "#",
-    repoUrl: "https://github.com/pp811010/bitx.git",
-    description: [
-      "BitX เป็นแพลตฟอร์มจำลองการซื้อขายเหรียญคริปโต (Cryptocurrency) ที่ช่วยให้ผู้ใช้สามารถฝึกฝนการลงทุนในสินทรัพย์ดิจิทัลได้โดยไม่ต้องใช้เงินจริง",
-      "ระบบถูกออกแบบมาเพื่อให้ผู้ใช้เข้าใจกลไกของตลาดคริปโต และการวิเคราะห์ราคา โดยให้พอร์ตเริ่มต้นของแต่ละ user 100,000 บาท เพื่อทดลองเทรดแบบไร้ความเสี่ยง",
-    ],
-    responsibilities: [
-      "พัฒนาส่วนของ Frontend ด้วย Next.js และ Tailwind CSS พร้อมออกแบบหน้าจอให้รองรับการแสดงผลแบบ Responsive",
-      "เชื่อมต่อ External APIs ของ CoinGecko API เพื่อดึงข้อมูลราคาและตลาดคริปโตแบบเรียลไทม์",
-      "พัฒนาระบบ Authentication และจัดการผู้ใช้ด้วย Clerk API",
-      "ออกเเบบโครงสร้างฐานข้อมูลของระบบ เเละเชื่อมต่อเข้าสู่ Supabase"
-    ],
-    highlights: [
-      "ระบบติดตามราคาคริปโตแบบเรียลไทม์ผ่าน CoinGecko API",
-      "User Authentication ผ่าน Google Account ด้วย Clerk",
-      "ระบบพอร์ตการลงทุน แสดงกำไร-ขาดทุนอย่างละเอียด",
-      "ระบบ Favorite ติดตามเหรียญที่สนใจ",
-      "ระบบเติมเงินจำลองผ่าน Stripe API",
-      "ระบบดูประวัติรายการซื้อ-ขาย",
-    ],
-    techStack: [
-      "Next.js",
-      "Tailwind CSS",
-      "Shadcn",
-      "Prisma.io",
-      "Supabase",
-      "Clerk",
-      "CoinGecko API",
-      "Stripe API",
-    ],
-    screenshots: [
-      {
-        title: "หน้าแรก",
-        description: "แสดงข้อมูลตลาดคริปโตแบบเรียลไทม์",
-        image: "/projects/bitx/home.jpg",
-      },
-      {
-        title: "หน้าเเสดง crypto ทั้งหมด",
-        description: "แสดงข้อมูลตลาดคริปโตแบบเรียลไทม์",
-        image: "/projects/bitx/allasset2.jpg",
-      },
-      {
-        title: "หน้าซื้อเหรียญ",
-        description: "ระบบจำลองการซื้อเหรียญ",
-        image: "/projects/bitx/buy.jpg",
-      },
-      {
-        title: "หน้าขายเหรียญ",
-        description: "ระบบจำลองการซื้อเหรียญ",
-        image: "/projects/bitx/sell.jpg",
-      },
-      {
-        title: "หน้าพอร์ตการลงทุน",
-        description: "แสดงกำไร-ขาดทุนของพอร์ตทั้งหมด",
-        image: "/projects/bitx/portfolio2.jpg",
-      },
-      {
-        title: "หน้ารายการโปรด",
-        description: "ระบบจำลองการซื้อเหรียญ",
-        image: "/projects/bitx/myfav2.jpg",
-      },
-      {
-        title: "หน้าเเสดงประวัติการซื้อขาย",
-        description: "ระบบจำลองการซื้อเหรียญ",
-        image: "/projects/bitx/tran.jpg",
-      },
-      {
-        title: "หน้าเติมเงิน",
-        description: "ระบบเติมเงินผ่าน Stripe",
-        image: "/projects/bitx/addCoin.jpg",
-      },
-      {
-        title: "หน้าเติมเงิน Stripe",
-        description: "ระบบจำลองการซื้อเหรียญ",
-        image: "/projects/bitx/strip.jpg",
-      },
-    ],
-    features: [
-      {
-        category: "ฟีเจอร์หลัก",
-        badge: "Real-time",
-        icon: "chart",
-        title: "ติดตามราคาเรียลไทม์",
-        description: "ดึงข้อมูลราคาและมูลค่าตลาดจาก CoinGecko API แบบเรียลไทม์",
-      },
-      {
-        category: "Portfolio",
-        badge: "Simulation",
-        icon: "wallet",
-        title: "พอร์ตจำลอง 100,000 บาท",
-        description: "ระบบพอร์ตการลงทุนเริ่มต้น 100,000 บาท คำนวณกำไร-ขาดทุนอย่างละเอียด",
-      },
-      {
-        category: "Authentication",
-        badge: "Secure",
-        icon: "lock",
-        title: "Login ด้วย Google",
-        description: "จัดการผู้ใช้และยืนยันตัวตนผ่าน Clerk API อย่างปลอดภัย",
-      },
-      {
-        category: "Payment",
-        badge: "Stripe",
-        icon: "credit-card",
-        title: "ระบบเติมเงินจำลอง",
-        description: "จำลองการเติมเงินเข้าพอร์ตผ่าน Stripe API",
-      },
-    ],
-    actors: [
-      {
-        emoji: "📈",
-        role: "Trader",
-        description:
-          "ผู้ใช้ที่สนใจเรียนรู้การลงทุนในคริปโต สามารถทดลองซื้อขายและวิเคราะห์พอร์ตได้โดยไม่ต้องเสี่ยงเงินจริง",
-      },
-    ],
-    heroImage: "/projects/bitx/hero.png",
-    screenshotCount: 10,
-  },
+ 
 
-  // 4. MuMood
+  // 3. MuMood
   "mumood": {
-    id: "4",
+    id: "3",
     title: "MuMood",
     platform: "mobile",
     subtitle: "Review Your Vibe, Discover Your Sound - แพลตฟอร์มรีวิวและค้นพบเพลง",
@@ -475,9 +348,10 @@ export const projectsData: Record<string, Project> = {
       "MuMood จึงเป็นแพลตฟอร์มรีวิวเพลงที่พัฒนาขึ้นเพื่อแก้ปัญหานี้ โดยเชื่อมต่อกับ Spotify และ Deezer API เพื่อให้ผู้ใช้สามารถฟังเพลง Demo 30 วินาที และให้คะแนนแยกตามด้าน Beat, Lyric และ Mood ผ่าน Slider Bar พร้อมระบบ Smart Search และ Admin Panel สำหรับจัดการเพลงแบบ Custom",
     ],
     responsibilities: [
-      "พัฒนาฟีเจอร์ในการเเสดงผลเพลง เเละการรีวิวเพลงทั้งหมด ในฝั่งของ music lover ด้วย Flutter",
-      "พัฒนาระบบ Backend ด้วย FastAPI เชิ่อมต่อเข้ากับฐานข้อมูล PostgreSQL โดยใช้ SQLAlchemy ORM สำหรับจัดการฐานข้อมูล",
-      "เชื่อมต่อ Spotify API สำหรับดึงข้อมูลเพลงและ Deezer API สำหรับ Demo เพลง 30 วินาที",
+      "พัฒนา Mobile Application พัฒนาฟังก์ชันการใช้งานฝั่งของ music lover รวมถึงการ authentication ด้วย Flutter",
+      "พัฒนาระบบ Backend ด้วย FastAPI จัดการข้อมูลในระบบ โดยเชิ่อมต่อเข้ากับฐานข้อมูล PostgreSQL ใช้ SQLAlchemy ORM สำหรับจัดการฐานข้อมูล",
+      "เชื่อมต่อ external API ได้แก่ Spotify API สำหรับดึงข้อมูลเพลงทั้งหมดบนโลก และ Deezer API สำหรับไฟล์เสียงเพลงตัวอย่าง มาเล่นภายใน application",
+      "รองรับการสร้างเพลงที่นอกเหนือจากที่มีใน spotify API เพื่อให้ครอบคลุมเพลงที่มีหลากหลายมากขึ้น",
     ],
     highlights: [
       "ระบบรีวิวเพลงแยกตาม Beat, Lyric, Mood ด้วย Slider Bar",
@@ -608,9 +482,9 @@ export const projectsData: Record<string, Project> = {
     screenshotCount: 20,
   },
 
-  // 5. Expert Connect
+  // 4. Expert Connect
   "expert-connect": {
-    id: "5",
+    id: "4",
     title: "Expert Connect",
     subtitle: "แพลตฟอร์มออนไลน์เชื่อมต่อผู้ถามกับผู้เชี่ยวชาญ พร้อมระบบ Escrow Payment",
     author: "Serapat Ratanapachai",
@@ -755,6 +629,135 @@ export const projectsData: Record<string, Project> = {
     ],
     heroImage: "/projects/expert-connect/hero2.jpg",
     screenshotCount: 21,
+  },
+
+   // 5. BitX
+  "bitx": {
+    id: "5",
+    title: "Cryptocurrency Trading Simulator Platform",
+    subtitle: "แพลตฟอร์มจำลองการซื้อขายเหรียญคริปโต",
+    author: "Serapat Ratanapachai",
+    duration: "1 ปี",
+    role: "Full Stack Developer",
+    col: 2,
+    status: "Completed",
+    liveUrl: "#",
+    repoUrl: "https://github.com/pp811010/bitx.git",
+    description: [
+      "BitX เป็นแพลตฟอร์มจำลองการซื้อขายเหรียญคริปโต (Cryptocurrency) ที่ช่วยให้ผู้ใช้สามารถฝึกฝนการลงทุนในสินทรัพย์ดิจิทัลได้โดยไม่ต้องใช้เงินจริง",
+      "ระบบถูกออกแบบมาเพื่อให้ผู้ใช้เข้าใจกลไกของตลาดคริปโต และการวิเคราะห์ราคา โดยให้พอร์ตเริ่มต้นของแต่ละ user 100,000 บาท เพื่อทดลองเทรดแบบไร้ความเสี่ยง",
+    ],
+    responsibilities: [
+      "พัฒนาส่วนของ Frontend ด้วย Next.js และ Tailwind CSS พร้อมออกแบบหน้าจอให้รองรับการแสดงผลแบบ Responsive",
+      "เชื่อมต่อ External APIs ของ CoinGecko API เพื่อดึงข้อมูลราคาและตลาดคริปโตแบบเรียลไทม์",
+      "พัฒนาระบบ Authentication และจัดการผู้ใช้ด้วย Clerk API",
+      "ออกเเบบโครงสร้างฐานข้อมูลของระบบ เเละเชื่อมต่อเข้าสู่ Supabase"
+    ],
+    highlights: [
+      "ระบบติดตามราคาคริปโตแบบเรียลไทม์ผ่าน CoinGecko API",
+      "User Authentication ผ่าน Google Account ด้วย Clerk",
+      "ระบบพอร์ตการลงทุน แสดงกำไร-ขาดทุนอย่างละเอียด",
+      "ระบบ Favorite ติดตามเหรียญที่สนใจ",
+      "ระบบเติมเงินจำลองผ่าน Stripe API",
+      "ระบบดูประวัติรายการซื้อ-ขาย",
+    ],
+    techStack: [
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn",
+      "Prisma.io",
+      "Supabase",
+      "Clerk",
+      "CoinGecko API",
+      "Stripe API",
+    ],
+    screenshots: [
+      {
+        title: "หน้าแรก",
+        description: "แสดงข้อมูลตลาดคริปโตแบบเรียลไทม์",
+        image: "/projects/bitx/home.jpg",
+      },
+      {
+        title: "หน้าเเสดง crypto ทั้งหมด",
+        description: "แสดงข้อมูลตลาดคริปโตแบบเรียลไทม์",
+        image: "/projects/bitx/allasset2.jpg",
+      },
+      {
+        title: "หน้าซื้อเหรียญ",
+        description: "ระบบจำลองการซื้อเหรียญ",
+        image: "/projects/bitx/buy.jpg",
+      },
+      {
+        title: "หน้าขายเหรียญ",
+        description: "ระบบจำลองการซื้อเหรียญ",
+        image: "/projects/bitx/sell.jpg",
+      },
+      {
+        title: "หน้าพอร์ตการลงทุน",
+        description: "แสดงกำไร-ขาดทุนของพอร์ตทั้งหมด",
+        image: "/projects/bitx/portfolio2.jpg",
+      },
+      {
+        title: "หน้ารายการโปรด",
+        description: "ระบบจำลองการซื้อเหรียญ",
+        image: "/projects/bitx/myfav2.jpg",
+      },
+      {
+        title: "หน้าเเสดงประวัติการซื้อขาย",
+        description: "ระบบจำลองการซื้อเหรียญ",
+        image: "/projects/bitx/tran.jpg",
+      },
+      {
+        title: "หน้าเติมเงิน",
+        description: "ระบบเติมเงินผ่าน Stripe",
+        image: "/projects/bitx/addCoin.jpg",
+      },
+      {
+        title: "หน้าเติมเงิน Stripe",
+        description: "ระบบจำลองการซื้อเหรียญ",
+        image: "/projects/bitx/strip.jpg",
+      },
+    ],
+    features: [
+      {
+        category: "ฟีเจอร์หลัก",
+        badge: "Real-time",
+        icon: "chart",
+        title: "ติดตามราคาเรียลไทม์",
+        description: "ดึงข้อมูลราคาและมูลค่าตลาดจาก CoinGecko API แบบเรียลไทม์",
+      },
+      {
+        category: "Portfolio",
+        badge: "Simulation",
+        icon: "wallet",
+        title: "พอร์ตจำลอง 100,000 บาท",
+        description: "ระบบพอร์ตการลงทุนเริ่มต้น 100,000 บาท คำนวณกำไร-ขาดทุนอย่างละเอียด",
+      },
+      {
+        category: "Authentication",
+        badge: "Secure",
+        icon: "lock",
+        title: "Login ด้วย Google",
+        description: "จัดการผู้ใช้และยืนยันตัวตนผ่าน Clerk API อย่างปลอดภัย",
+      },
+      {
+        category: "Payment",
+        badge: "Stripe",
+        icon: "credit-card",
+        title: "ระบบเติมเงินจำลอง",
+        description: "จำลองการเติมเงินเข้าพอร์ตผ่าน Stripe API",
+      },
+    ],
+    actors: [
+      {
+        emoji: "📈",
+        role: "Trader",
+        description:
+          "ผู้ใช้ที่สนใจเรียนรู้การลงทุนในคริปโต สามารถทดลองซื้อขายและวิเคราะห์พอร์ตได้โดยไม่ต้องเสี่ยงเงินจริง",
+      },
+    ],
+    heroImage: "/projects/bitx/hero.png",
+    screenshotCount: 10,
   },
 
   // 6. Sport Management System

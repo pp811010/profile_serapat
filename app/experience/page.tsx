@@ -98,12 +98,12 @@ export default function ExperiencePage() {
         <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10">
             <div className="max-w-4xl mx-auto">
 
-                {/* ===== Media: same carousel component used on project pages ===== */}
+
                 <div className="mb-8">
                     <ImageCarousel slides={slides} />
                 </div>
 
-                {/* ===== Header: role, company, duration, tech stack ===== */}
+
                 <div className="mb-10">
                     <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 bg-ink rounded-full flex items-center justify-center shrink-0">
@@ -139,7 +139,7 @@ export default function ExperiencePage() {
                     </div>
                 </div>
 
-                {/* ===== Overview ===== */}
+
                 <div className="mb-10">
                     <h2 className="text-lg font-bold text-gray-900 mb-3">Overview</h2>
                     <p className="text-sm text-muted leading-relaxed">
@@ -147,7 +147,7 @@ export default function ExperiencePage() {
                     </p>
                 </div>
 
-                {/* ===== Responsibilities ===== */}
+
                 <div className="mb-10">
                     <h2 className="text-lg font-bold text-gray-900 mb-4">Responsibilities</h2>
                     <div className="grid grid-cols-1 gap-4">
@@ -173,7 +173,7 @@ export default function ExperiencePage() {
                     </div>
                 </div>
 
-                {/* ===== Presentations ===== */}
+
                 <div className="mb-4">
                     <h2 className="text-lg font-bold text-gray-900 mb-4">Presentations</h2>
                     <div className="flex flex-col gap-6">
