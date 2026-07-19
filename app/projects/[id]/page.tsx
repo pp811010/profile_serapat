@@ -40,7 +40,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   if (!project) {
     return (
-      <main className="p-6 md:p-10 lg:p-14 min-h-screen flex items-center justify-center bg-white">
+      <main className="p-6 md:p-10 lg:p-14 min-h-screen flex items-center justify-center bg-white pt-20">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-ink mb-2">ไม่พบโปรเจกต์นี้</h1>
           <Link href="/#projects" className="text-accent hover:underline font-medium">
@@ -67,7 +67,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
       : [{ title: project.title, image: project.heroImage }];
 
   return (
-    <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10">
+    <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10 mt-20 md:mt-10">
       <div className="max-w-4xl mx-auto">
 
 

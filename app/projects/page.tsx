@@ -86,7 +86,7 @@ const projectsData = [
 
 export default function ProjectsPage() {
     return (
-        <div className="h-[calc(100vh-4rem)] flex flex-col">
+        <div className="h-[calc(100vh-4rem)] flex flex-col ">
             <div className="max-w-[1400px] mx-auto flex flex-col flex-1 w-full mt-10">
 
                 <div className=" px-8 lg:px-14 flex-shrink-0  lg:mb-14 text-center flex items-center justify-center gap-2">

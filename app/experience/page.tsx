@@ -95,7 +95,7 @@ export default function ExperiencePage() {
     ];
 
     return (
-        <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10">
+        <main className="p-6 md:p-10 lg:p-14 min-h-screen bg-white text-ink font-sans antialiased relative z-10 mt-20 md:mt-10">
             <div className="max-w-4xl mx-auto">
 
 
