@@ -53,10 +53,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
   const isMobile = project.platform === "mobile";
   const platformLabel = isMobile
-    ? "📱 Mobile App"
-    : project.platform === "web"
-      ? "💻 Web Application"
-      : "🖥️ Desktop Application";
+    ? "📱 Mobile App":
+       "💻 Web Application";
 
   // Build slides for the carousel: prefer real screenshots, fall back to the hero image.
   const slides =
