@@ -399,7 +399,7 @@ export default function Hero() {
         <div className="flex gap-3 overflow-x-auto px-6 py-4 max-full mx-auto scrollbar">
           <button
             onClick={() => setActiveTag("All")}
-            className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
+            className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
               ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-transparent shadow-md shadow-cyan-500/15"
               : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
               }`}
@@ -413,8 +413,8 @@ export default function Hero() {
               <button
                 key={tech}
                 onClick={() => setActiveTag(tech)}
-                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${active
-                  ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-transparent shadow-md shadow-cyan-500/15"
+                className={`whitespace-nowrap rounded-xl border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${active
+                  ? "bg-black text-white border-transparent shadow-md "
                   : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
                   }`}
               >
