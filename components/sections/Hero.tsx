@@ -400,7 +400,7 @@ export default function Hero() {
           <button
             onClick={() => setActiveTag("All")}
             className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
-              ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-transparent shadow-md shadow-cyan-500/15"
+              ? "bg-black text-white border-transparent shadow-md"
               : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
               }`}
           >
