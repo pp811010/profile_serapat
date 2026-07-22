@@ -347,3 +347,53 @@
   border: 1px solid #e5e7eb;
   z-index: 50;
 }
+
+/* Custom Scrollbar Utility */
+.scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Scroll Hint Animation */
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  80%, 100% {
+    transform: translateY(200%);
+  }
+}
+
+.animate-scroll-hint {
+  animation: scroll-hint 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fade In Animation */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+/* Scale Up Animation */
+@keyframes scale-up {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scale-up {
+  animation: scale-up 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

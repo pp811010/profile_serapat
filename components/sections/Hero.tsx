@@ -1,9 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { Search, Star, Phone, Mail } from "lucide-react";
-import VantaFogBackground from "@/components/VantaGlobeBackground";
+import { useMemo, useState, useEffect } from "react";
+import { Search, Star, Phone, Mail, X, Copy, Check, ExternalLink } from "lucide-react";
 import Link from "next/link";
+
+// Custom Github icon component since brand icons were removed in lucide-react v1.0+
+function Github({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  );
+}
 
 
 
@@ -54,7 +74,7 @@ const projectsData = [
     ],
     image: "/projects/chatdio/Home.jpg",
     role: "Full-Stack Dev",
-    date: "Jan 2025",
+    date: "Jan 2026",
     category: "Development",
     likes: 231,
     views: 1840,
@@ -269,6 +289,20 @@ function sortTechsFrontToBack(techs: string[]) {
 export default function Hero() {
   const [activeTag, setActiveTag] = useState("All");
   const [query, setQuery] = useState("");
+  const [isContactOpen, setIsContactOpen] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleOpenContact = () => setIsContactOpen(true);
+    window.addEventListener("open-contact", handleOpenContact);
+    return () => window.removeEventListener("open-contact", handleOpenContact);
+  }, []);
+
+  const copyToClipboard = (text: string, field: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedField(field);
+    setTimeout(() => setCopiedField(null), 2000);
+  };
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -285,32 +319,71 @@ export default function Hero() {
 
   return (
     <div className="bg-white text-gray-900 font-sans">
-
-
-
-      <VantaFogBackground
-        className="relative min-h-[70vh] flex items-end justify-center"
-        options={{
-          highlightColor: 0x8cffbf,
-          midtoneColor: 0x469f7e,
-          lowlightColor: 0xaff4c4,
-          blurFactor: 0.72,
-          speed: 2.20,
-          zoom: 0.90,
-        }}
-      >
-        <div className="flex flex-col items-center gap-6 pb-20 px-6 text-center ">
-          <h1 className="max-w-4xl text-4xl md:text-6xl font-semibold uppercase tracking-wide text-black">
-            Hello, I'm Serapat Ratanapachai.
+      <div className="relative h-screen w-full bg-white overflow-hidden select-none flex items-center justify-center">
+        {/* Title / Name (Top Left) */}
+        <div className="absolute top-10 left-6 md:top-16 md:left-16 flex flex-col gap-1 z-20 text-left">
+          <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
+            Software Developer
+          </span>
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[0.95] uppercase">
+            Serapat <br className="hidden md:inline" /> Ratanapachai
           </h1>
-          <p className="max-w-xl text-xl text-gray-500">This space is dedicated to highlighting my past work and my entire journey in the software development career path</p>
         </div>
-      </VantaFogBackground>
+
+        {/* Navigation (Top Right) */}
+        <div className="absolute top-10 right-6 md:top-16 md:right-16 flex flex-col items-end gap-3 z-20 text-right">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-xs md:text-sm font-bold tracking-[0.15em] text-slate-900 hover:text-cyan-500 transition-colors uppercase cursor-pointer"
+          >
+            Home
+          </button>
+          <button 
+            onClick={() => document.getElementById('portfolio-section')?.scrollIntoView({ behavior: 'smooth' })}
+            className="text-xs md:text-sm font-bold tracking-[0.15em] text-slate-400 hover:text-slate-900 transition-colors uppercase cursor-pointer"
+          >
+            Projects
+          </button>
+          <button 
+            onClick={() => setIsContactOpen(true)}
+            className="text-xs md:text-sm font-bold tracking-[0.15em] text-slate-400 hover:text-slate-900 transition-colors uppercase cursor-pointer text-right outline-none"
+          >
+            Contact
+          </button>
+        </div>
+
+        {/* Center 3D Asset */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden mt-6 md:mt-0">
+          <img 
+            src="/hero_traffic_pole.png" 
+            alt="3D Traffic Light" 
+            className="h-[65%] md:h-[85%] w-auto object-contain select-none opacity-[0.98]"
+          />
+        </div>
+
+       
+
+        {/* Footer Meta Info (Bottom Row) */}
+        <div className="absolute bottom-10 left-6 right-6 md:bottom-16 md:left-16 md:right-16 grid grid-cols-1 md:grid-cols-3 gap-6 z-20 pt-8 border-t border-slate-100/80">
+          <div className="flex flex-col gap-1 text-left">
+            <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Base</span>
+            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Bangkok, Thailand</span>
+          </div>
+          <div className="flex flex-col gap-1 text-left">
+            <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Focus</span>
+            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Full-Stack / Next.js / Go / Python</span>
+          </div>
+          <div className="flex flex-col gap-1 text-left">
+            <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Index</span>
+            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Portfolio 2026</span>
+          </div>
+        </div>
+      </div>
 
 
-      <section className="bg-gray-50 border-b border-gray-200 sticky top-0 z-20">
-        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 px-6 max-w-[1600px] mx-auto">
-          <div className="flex-1 w-full flex items-center gap-3 bg-white border border-gray-200 rounded-full px-4 py-2">
+      <section className="bg-white/70 backdrop-blur-md border-b border-gray-200/40 sticky top-0 z-20">
+        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 px-6 w-screen mx-auto">
+          <div className="flex-1 w-full flex items-center gap-3 bg-white/60 backdrop-blur-sm border border-gray-200/80 rounded-full px-4 py-2 focus-within:bg-white/95 focus-within:border-cyan-500/50 focus-within:ring-2 focus-within:ring-cyan-500/10 transition-all duration-200">
             <Search size={16} className="text-gray-400 shrink-0" />
             <input
               value={query}
@@ -323,12 +396,12 @@ export default function Hero() {
         </div>
 
 
-        <div className="flex gap-3 overflow-x-auto px-6 py-4 max-w-[1600px] mx-auto scrollbar">
+        <div className="flex gap-3 overflow-x-auto px-6 py-4 max-full mx-auto scrollbar">
           <button
             onClick={() => setActiveTag("All")}
-            className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-colors ${activeTag === "All"
-              ? "bg-gray-900 text-white border-gray-900"
-              : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
+            className={`flex items-center gap-1.5 whitespace-nowrap rounded-full border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
+              ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-transparent shadow-md shadow-cyan-500/15"
+              : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
               }`}
           >
             <Star size={13} />
@@ -340,9 +413,9 @@ export default function Hero() {
               <button
                 key={tech}
                 onClick={() => setActiveTag(tech)}
-                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm cursor-pointer transition-colors ${active
-                  ? "bg-gray-900 text-white border-gray-900"
-                  : "bg-white border-gray-300 text-gray-700 hover:bg-gray-100"
+                className={`whitespace-nowrap rounded-full border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${active
+                  ? "bg-gradient-to-r from-cyan-500 to-teal-500 text-white border-transparent shadow-md shadow-cyan-500/15"
+                  : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
                   }`}
               >
                 {tech}
@@ -353,8 +426,8 @@ export default function Hero() {
       </section>
 
 
-      <section className=" px-6 lg:px-10 pb-12 pt-10 max-w-[1600px] mx-auto">
-        <h3 className="text-6xl font-bold mb-8 lg:mt-10 text-white [-webkit-text-stroke:1.5px_#197c57] text-center">My Portfolio</h3>
+      <section id="portfolio-section" className=" px-6 lg:px-10 pb-12 pt-10 max-w-full mx-auto">
+
 
         {filtered.length === 0 ? (
           <p className="text-base text-gray-500">No projects match "{query}".</p>
@@ -388,6 +461,91 @@ export default function Hero() {
           </div>
         </div>
       </footer>
+
+      {/* Contact Modal Popup */}
+      {isContactOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-md animate-fade-in">
+          <div className="relative w-full max-w-sm bg-white border border-slate-100 rounded-3xl p-8 shadow-2xl animate-scale-up">
+            {/* Close Button */}
+            <button
+              onClick={() => setIsContactOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer outline-none"
+            >
+              <X size={16} />
+            </button>
+
+            {/* Header Icon */}
+            <div className="mx-auto w-12 h-12 bg-black rounded-2xl flex items-center justify-center shadow-lg shadow-cyan-500/10 mb-5">
+              <Mail size={20} className="text-white" />
+            </div>
+
+            {/* Title */}
+            <h3 className="text-xl font-bold text-slate-900 mb-2">Get in Touch</h3>
+
+            {/* Items List */}
+            <div className="space-y-3.5">
+              {/* Phone */}
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100/55">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600">
+                    <Phone size={14} />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Phone</span>
+                    <span className="text-sm font-semibold text-slate-800">090-232-7959</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => copyToClipboard("090-232-7959", "phone")}
+                  className="p-2 rounded-lg hover:bg-slate-200/50 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+                >
+                  {copiedField === "phone" ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                </button>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100/55">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600">
+                    <Mail size={14} />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Email</span>
+                    <span className="text-sm font-semibold text-slate-800">serapat_rata@gmail.com</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => copyToClipboard("serapat_rata@gmail.com", "email")}
+                  className="p-2 rounded-lg hover:bg-slate-200/50 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer"
+                >
+                  {copiedField === "email" ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                </button>
+              </div>
+
+              {/* GitHub */}
+              <div className="flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100/55">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600">
+                    <Github size={14} />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">GitHub</span>
+                    <span className="text-sm font-semibold text-slate-800">https://github.com/pp811010</span>
+                  </div>
+                </div>
+                <a
+                  href="https://github.com/pp811010"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg hover:bg-slate-200/50 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer flex items-center justify-center"
+                >
+                  <ExternalLink size={14} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -400,54 +558,60 @@ function ProjectCard({ project }) {
   return (
     <Link
       href={project.link || "#"}
-      className="group block cursor-pointer ring ring-gray-100 hover:ring-gray-300 p-3 rounded-xl "
+      className="group block cursor-pointer bg-white border border-gray-100/70 rounded-2xl p-4 shadow-[0_2px_8px_rgba(0,0,0,0.015)] hover:shadow-[0_12px_24px_rgba(0,0,0,0.05)] hover:-translate-y-1 transition-all duration-300"
     >
-      <div className="relative aspect-[4/3] rounded-md overflow-hidden bg-gray-100">
+      <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-gray-50 border border-gray-100/50">
         <img
           src={project.image}
           alt={project.title}
-          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-500 ease-out"
           onError={(e) => {
             e.currentTarget.src =
               "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800&auto=format&fit=crop";
           }}
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
 
-      <div className="mt-3">
+      <div className="mt-4">
         <div className="min-w-0">
-          <p className="text-lg font-bold text-gray-900 break-words ">
+          <h4 className="text-base font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors line-clamp-1">
             {project.title}
-          </p>
-          <div className="flex items-center gap-1.5 mt-1">
-            <span className="text-sm text-gray-500 line-clamp-1">
+          </h4>
+          <div className="flex items-center justify-between gap-1.5 mt-1.5">
+            <span className="text-xs text-gray-500 font-medium line-clamp-1">
               {project.role}
             </span>
             {project.pro && (
-              <span className="text-[10px] font-bold text-white bg-blue-600 rounded px-1.5 py-0.5 shrink-0">
-                Work Experience
+              <span className="text-[9px] font-semibold text-cyan-700 bg-cyan-50 border border-cyan-100/50 rounded px-1.5 py-0.5 shrink-0">
+                Work
               </span>
             )}
           </div>
         </div>
 
         {sortedTechs.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-2">
+          <div className="flex flex-wrap gap-1 mt-3">
             {sortedTechs.slice(0, 3).map((tech) => (
               <span
                 key={tech}
-                className="text-xs text-gray-600 bg-gray-100 border border-gray-200 rounded-full px-2 py-0.5"
+                className="text-[10px] text-slate-600 bg-slate-50 border border-slate-100/80 rounded-md px-2 py-0.5 font-medium tracking-wide"
               >
                 {tech}
               </span>
             ))}
             {sortedTechs.length > 3 && (
-              <span className="text-xs text-gray-400 px-1 py-0.5">
+              <span className="text-[10px] text-slate-400 font-medium px-1 py-0.5">
                 +{sortedTechs.length - 3}
               </span>
             )}
           </div>
         )}
+
+        <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-50 text-[11px] text-slate-400 font-medium">
+          <span>Year</span>
+          <span>{project.date ? project.date.split(" ").pop() : ""}</span>
+        </div>
       </div>
     </Link>
   );
