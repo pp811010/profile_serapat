@@ -355,7 +355,7 @@ export default function Hero() {
         {/* Center 3D Asset */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden mt-6 md:mt-0">
           <img 
-            src="/hero_traffic_pole.png" 
+            src="/surf.jpg" 
             alt="3D Traffic Light" 
             className="h-[65%] md:h-[85%] w-auto object-contain select-none opacity-[0.98]"
           />

@@ -65,7 +65,7 @@ export default function Navbar() {
             <Link
               key={link.id}
               href={link.pathName}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-1.5 rounded-xl text-sm font-medium transition-all duration-200 ${
                  currentPage === link.id
                   ? "text-cyan-700"
                   : "text-gray-600"
