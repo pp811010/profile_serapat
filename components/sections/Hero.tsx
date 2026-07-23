@@ -516,7 +516,7 @@ export default function Hero() {
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-bold text-slate-900 mb-2">Get in Touch</h3>
+            <h3 className="text-xl font-bold text-slate-900 mb-2 text-center">Get in Touch</h3>
 
             {/* Items List */}
             <div className="space-y-3.5">
