@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import { Download } from "lucide-react";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -74,6 +75,14 @@ export default function Navbar() {
           >
             Contact
           </button>
+          <a
+            href="/cv_serapat_ratanapachai1.pdf"
+            download="cv_serapat_ratanapachai.pdf"
+            className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-sm font-medium text-white bg-cyan-700 hover:bg-cyan-800 transition-all duration-200 cursor-pointer shadow-[0_2px_8px_rgba(14,116,144,0.25)] ml-1"
+          >
+            <Download size={14} />
+            <span>Download Resume</span>
+          </a>
         </div>
 
         <button
@@ -118,6 +127,15 @@ export default function Navbar() {
             >
               Contact
             </button>
+            <a
+              href="/cv_serapat_ratanapachai1.pdf"
+              download="cv_serapat_ratanapachai.pdf"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white bg-cyan-700 hover:bg-cyan-800 transition cursor-pointer shadow-[0_2px_8px_rgba(14,116,144,0.25)] mt-1.5"
+            >
+              <Download size={15} />
+              <span>Download Resume</span>
+            </a>
           </div>
         </div>
       )}
