@@ -3,6 +3,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { Search, Star, Phone, Mail, X, Copy, Check, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import WordTrailBackground from "./WordTrailBackground";
 
 // Custom Github icon component since brand icons were removed in lucide-react v1.0+
 function Github({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number }) {
@@ -291,11 +292,25 @@ export default function Hero() {
   const [query, setQuery] = useState("");
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [activeView, setActiveView] = useState<"home" | "projects">("home");
 
   useEffect(() => {
     const handleOpenContact = () => setIsContactOpen(true);
     window.addEventListener("open-contact", handleOpenContact);
     return () => window.removeEventListener("open-contact", handleOpenContact);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = window.innerHeight * 0.4;
+      if (window.scrollY < threshold) {
+        setActiveView("home");
+      } else {
+        setActiveView("projects");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const copyToClipboard = (text: string, field: string) => {
@@ -318,8 +333,46 @@ export default function Hero() {
   }, [activeTag, query]);
 
   return (
-    <div className="bg-white text-gray-900 font-sans">
-      <div className="relative h-screen w-full bg-white overflow-hidden select-none flex items-center justify-center">
+    <div className="bg-white text-gray-900 font-sans min-h-screen relative">
+      {/* Persistent Navigation (Top Right) */}
+      <div className="fixed top-10 right-6 md:top-16 md:right-16 flex flex-col items-end gap-3.5 z-30 text-right select-none">
+        <button 
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          className={`text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 uppercase cursor-pointer ${
+            activeView === "home"
+              ? "bg-[#00f0ff] text-black px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,240,255,0.3)] border border-black/5 scale-105"
+              : "text-slate-400 hover:text-slate-900 hover:scale-105"
+          }`}
+        >
+          Home
+        </button>
+        <button 
+          onClick={() => {
+            document.getElementById("projects-section")?.scrollIntoView({ behavior: "smooth" });
+          }}
+          className={`text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 uppercase cursor-pointer ${
+            activeView === "projects"
+              ? "bg-[#d4ff05] text-black px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(212,255,5,0.3)] border border-black/5 scale-105"
+              : "text-slate-400 hover:text-slate-900 hover:scale-105"
+          }`}
+        >
+          Projects
+        </button>
+        <button 
+          onClick={() => setIsContactOpen(true)}
+          className="text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 uppercase cursor-pointer text-right outline-none hover:scale-105 text-slate-400 hover:text-slate-900"
+        >
+          Contact
+        </button>
+      </div>
+
+      {/* Home (Hero) Section */}
+      <div className="relative w-full h-screen bg-[#f6f6f6] overflow-hidden select-none flex items-center justify-center">
+        {/* Word Trail Capsule Background */}
+        <WordTrailBackground />
+
         {/* Title / Name (Top Left) */}
         <div className="absolute top-10 left-6 md:top-16 md:left-16 flex flex-col gap-1 z-20 text-left">
           <span className="text-[15px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
@@ -330,41 +383,8 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Navigation (Top Right) */}
-        <div className="absolute top-10 right-6 md:top-16 md:right-16 flex flex-col items-end gap-3 z-20 text-right">
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="text-xs md:text-sm font-bold tracking-[0.15em] text-slate-900 hover:text-cyan-500 transition-colors uppercase cursor-pointer"
-          >
-            Home
-          </button>
-          <button 
-            onClick={() => document.getElementById('portfolio-section')?.scrollIntoView({ behavior: 'smooth' })}
-            className="text-xs md:text-sm font-bold tracking-[0.15em] text-slate-400 hover:text-slate-900 transition-colors uppercase cursor-pointer"
-          >
-            Projects
-          </button>
-          <button 
-            onClick={() => setIsContactOpen(true)}
-            className="text-xs md:text-sm font-bold tracking-[0.15em] text-slate-400 hover:text-slate-900 transition-colors uppercase cursor-pointer text-right outline-none"
-          >
-            Contact
-          </button>
-        </div>
-
-        {/* Center 3D Asset */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden mt-6 md:mt-0">
-          <img 
-            src="/surf.jpg" 
-            alt="3D Traffic Light" 
-            className="h-[65%] md:h-[85%] w-auto object-contain select-none opacity-[0.98]"
-          />
-        </div>
-
-       
-
         {/* Footer Meta Info (Bottom Row) */}
-        <div className="absolute bottom-10 left-6 right-6 md:bottom-16 md:left-16 md:right-16 grid grid-cols-1 md:grid-cols-3 gap-6 z-20 pt-8 border-t border-slate-100/80">
+        <div className="absolute bottom-10 left-6 right-6 md:bottom-16 md:left-16 md:right-16 grid grid-cols-1 md:grid-cols-3 gap-6 z-20 pt-8 border-t border-slate-200/80">
           <div className="flex flex-col gap-1 text-left">
             <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Base</span>
             <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Bangkok, Thailand</span>
@@ -380,87 +400,103 @@ export default function Hero() {
         </div>
       </div>
 
-
-      <section className="bg-white/70 backdrop-blur-md border-b border-gray-200/40 sticky top-0 z-20">
-        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 px-6 w-screen mx-auto">
-          <div className="flex-1 w-full flex items-center gap-3 bg-white/60 backdrop-blur-sm border border-gray-200/80 rounded-full px-4 py-2 focus-within:bg-white/95 focus-within:border-cyan-500/50 focus-within:ring-2 focus-within:ring-cyan-500/10 transition-all duration-200">
-            <Search size={16} className="text-gray-400 shrink-0" />
-            <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              type="text"
-              placeholder="Search by project name or tech..."
-              className="bg-transparent outline-none text-base flex-1 placeholder:text-gray-400 text-gray-900"
-            />
+      {/* Projects Section */}
+      <div 
+        id="projects-section"
+        className="relative w-full bg-white min-h-screen pt-24 md:pt-32 flex flex-col justify-between"
+      >
+        <div>
+          {/* Page Header */}
+          <div className="px-6 mb-6 md:px-10 flex flex-col gap-1 text-left select-none">
+            <span className="text-[15px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
+              Works / Showcase
+            </span>
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-none uppercase">
+              Projects
+            </h2>
           </div>
-        </div>
 
+          {/* Search & Tag Filter Bar */}
+          <section className="bg-white/70 backdrop-blur-md border-b border-gray-200/40 sticky top-0 z-20">
+            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 py-4 px-6 w-screen mx-auto">
+              <div className="flex-1 w-full flex items-center gap-3 bg-white/60 backdrop-blur-sm border border-gray-200/80 rounded-full px-4 py-2 focus-within:bg-white/95 focus-within:border-cyan-500/50 focus-within:ring-2 focus-within:ring-cyan-500/10 transition-all duration-200">
+                <Search size={16} className="text-gray-400 shrink-0" />
+                <input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  type="text"
+                  placeholder="Search by project name or tech..."
+                  className="bg-transparent outline-none text-base flex-1 placeholder:text-gray-400 text-gray-900"
+                />
+              </div>
+            </div>
 
-        <div className="flex gap-3 overflow-x-auto px-6 py-4 max-full mx-auto scrollbar">
-          <button
-            onClick={() => setActiveTag("All")}
-            className={`flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
-              ? "bg-[#d4ff05] text-black border-transparent shadow-md"
-              : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
-              }`}
-          >
-            <Star size={13} />
-            All
-          </button>
-          {TECH_TAGS.map((tech) => {
-            const active = activeTag === tech;
-            return (
+            <div className="flex gap-3 overflow-x-auto px-6 py-4 max-full mx-auto scrollbar">
               <button
-                key={tech}
-                onClick={() => setActiveTag(tech)}
-                className={`whitespace-nowrap rounded-xl border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${active
-                  ? "bg-[#d4ff05] text-black border-transparent shadow-md "
-                  : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
-                  }`}
+                onClick={() => setActiveTag("All")}
+                className={`flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${
+                  activeTag === "All"
+                    ? "bg-[#d4ff05] text-black border-transparent shadow-md"
+                    : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
+                }`}
               >
-                {tech}
+                <Star size={13} />
+                All
               </button>
-            );
-          })}
+              {TECH_TAGS.map((tech) => {
+                const active = activeTag === tech;
+                return (
+                  <button
+                    key={tech}
+                    onClick={() => setActiveTag(tech)}
+                    className={`whitespace-nowrap rounded-xl border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${
+                      active
+                        ? "bg-[#d4ff05] text-black border-transparent shadow-md "
+                        : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
+                    }`}
+                  >
+                    {tech}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* Projects Grid */}
+          <section id="portfolio-section" className="px-6 lg:px-10 pb-12 pt-10 max-w-full mx-auto">
+            {filtered.length === 0 ? (
+              <p className="text-base text-gray-500">No projects match "{query}".</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {filtered.map((item) => (
+                  <ProjectCard key={item.id} project={item} />
+                ))}
+              </div>
+            )}
+          </section>
         </div>
-      </section>
 
-
-      <section id="portfolio-section" className=" px-6 lg:px-10 pb-12 pt-10 max-w-full mx-auto">
-
-
-        {filtered.length === 0 ? (
-          <p className="text-base text-gray-500">No projects match "{query}".</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {filtered.map((item) => (
-              <ProjectCard key={item.id} project={item} />
-            ))}
+        <footer className="bg-gray-50 border-t border-gray-200 mt-auto">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 px-6 py-6 max-w-[1600px] mx-auto text-xs text-gray-500">
+            <div className="flex flex-wrap items-center gap-5">
+              <a
+                href="tel:0902327959"
+                className="flex items-center gap-1.5 hover:text-gray-800 transition-colors"
+              >
+                <Phone size={14} />
+                090-232-7959
+              </a>
+              <a
+                href="mailto:serapat_rata@gmail.com"
+                className="flex items-center gap-1.5 hover:text-gray-800 transition-colors"
+              >
+                <Mail size={14} />
+                serapat_rata@gmail.com
+              </a>
+            </div>
           </div>
-        )}
-      </section>
-
-
-      <footer className="bg-gray-50 border-t border-gray-200">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 px-6 py-6 max-w-[1600px] mx-auto text-xs text-gray-500">
-          <div className="flex flex-wrap items-center gap-5">
-            <a
-              href="tel:0902327959"
-              className="flex items-center gap-1.5 hover:text-gray-800 transition-colors"
-            >
-              <Phone size={14} />
-              090-232-7959
-            </a>
-            <a
-              href="mailto:serapat_rata@gmail.com"
-              className="flex items-center gap-1.5 hover:text-gray-800 transition-colors"
-            >
-              <Mail size={14} />
-              serapat_rata@gmail.com
-            </a>
-          </div>
-        </div>
-      </footer>
+        </footer>
+      </div>
 
       {/* Contact Modal Popup */}
       {isContactOpen && (

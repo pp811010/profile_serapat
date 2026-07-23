@@ -1,6 +1,7 @@
 allowBuilds:
   sharp: false
   unrs-resolver: false
+  webgl-fluid: set this to true or false
 ignoredBuiltDependencies:
   - sharp
   - unrs-resolver
