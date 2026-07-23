@@ -7,7 +7,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(null);
-  const [isVisible, setIsVisible] = useState(pathname !== "/");
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
@@ -15,7 +15,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (pathname === "/") {
-      setCurrentPage("home");
+      setCurrentPage("projects");
     } else if (pathname === "/projects") {
       setCurrentPage("projects");
     } else if (pathname === "/experience") {
@@ -24,26 +24,20 @@ export default function Navbar() {
   }, [pathname]);
 
   useEffect(() => {
-    if (pathname !== "/") {
-      setIsVisible(true);
-      return;
-    }
-
-    const handleScroll = () => {
-      if (window.scrollY > window.innerHeight * 0.7) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    setIsVisible(true);
   }, [pathname]);
 
+  const handleContactClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (pathname === "/") {
+      window.dispatchEvent(new CustomEvent("open-contact"));
+    } else {
+      window.location.href = "/?contact=true";
+    }
+  };
+
   const navLinks = [
-    { pathName: "/", id: "home", name : "Home" },
+    { pathName: "/", id: "projects", name: "Projects" },
   ];
 
   return (
@@ -74,7 +68,12 @@ export default function Navbar() {
               {link.name}
             </Link>
           ))}
-        
+          <button
+            onClick={handleContactClick}
+            className="px-4 py-1.5 rounded-xl text-sm font-medium text-gray-600 hover:text-cyan-700 transition-all duration-200 cursor-pointer"
+          >
+            Contact
+          </button>
         </div>
 
         <button
@@ -110,7 +109,15 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-           
+            <button
+              onClick={(e) => {
+                setIsMobileMenuOpen(false);
+                handleContactClick(e);
+              }}
+              className="w-full text-left block px-4 py-2.5 rounded-xl text-sm font-medium text-gray-600 hover:text-cyan-700 hover:bg-gray-50 transition cursor-pointer"
+            >
+              Contact
+            </button>
           </div>
         </div>
       )}

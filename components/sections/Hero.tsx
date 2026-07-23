@@ -3,7 +3,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { Search, Star, Phone, Mail, X, Copy, Check, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import WordTrailBackground from "./WordTrailBackground";
 
 // Custom Github icon component since brand icons were removed in lucide-react v1.0+
 function Github({ size = 24, ...props }: React.SVGProps<SVGSVGElement> & { size?: number }) {
@@ -292,25 +291,20 @@ export default function Hero() {
   const [query, setQuery] = useState("");
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-  const [activeView, setActiveView] = useState<"home" | "projects">("home");
 
   useEffect(() => {
     const handleOpenContact = () => setIsContactOpen(true);
     window.addEventListener("open-contact", handleOpenContact);
-    return () => window.removeEventListener("open-contact", handleOpenContact);
-  }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const threshold = window.innerHeight * 0.4;
-      if (window.scrollY < threshold) {
-        setActiveView("home");
-      } else {
-        setActiveView("projects");
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("contact") === "true") {
+      setIsContactOpen(true);
+      const url = new URL(window.location.href);
+      url.searchParams.delete("contact");
+      window.history.replaceState({}, document.title, url.pathname);
+    }
+
+    return () => window.removeEventListener("open-contact", handleOpenContact);
   }, []);
 
   const copyToClipboard = (text: string, field: string) => {
@@ -334,71 +328,6 @@ export default function Hero() {
 
   return (
     <div className="bg-white text-gray-900 font-sans min-h-screen relative">
-      {/* Persistent Navigation (Top Right) */}
-      <div className="fixed top-10 right-6 md:top-16 md:right-16 flex flex-col items-end gap-3.5 z-30 text-right select-none">
-        <button 
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className={`text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 uppercase cursor-pointer ${
-            activeView === "home"
-              ? "bg-[#00f0ff] text-black px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(0,240,255,0.3)] border border-black/5 scale-105"
-              : "text-slate-400 hover:text-slate-900 hover:scale-105"
-          }`}
-        >
-          Home
-        </button>
-        <button 
-          onClick={() => {
-            document.getElementById("projects-section")?.scrollIntoView({ behavior: "smooth" });
-          }}
-          className={`text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 uppercase cursor-pointer ${
-            activeView === "projects"
-              ? "bg-[#d4ff05] text-black px-4 py-1.5 rounded-full shadow-[0_4px_12px_rgba(212,255,5,0.3)] border border-black/5 scale-105"
-              : "text-slate-400 hover:text-slate-900 hover:scale-105"
-          }`}
-        >
-          Projects
-        </button>
-        <button 
-          onClick={() => setIsContactOpen(true)}
-          className="text-xs md:text-sm font-bold tracking-[0.15em] transition-all duration-300 uppercase cursor-pointer text-right outline-none hover:scale-105 text-slate-400 hover:text-slate-900"
-        >
-          Contact
-        </button>
-      </div>
-
-      {/* Home (Hero) Section */}
-      <div className="relative w-full h-screen bg-[#f6f6f6] overflow-hidden select-none flex items-center justify-center">
-        {/* Word Trail Capsule Background */}
-        <WordTrailBackground />
-
-        {/* Title / Name (Top Left) */}
-        <div className="absolute top-10 left-6 md:top-16 md:left-16 flex flex-col gap-1 z-20 text-left">
-          <span className="text-[15px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
-            Software Developer
-          </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[0.95] uppercase">
-            Serapat <br className="hidden md:inline" /> Ratanapachai
-          </h1>
-        </div>
-
-        {/* Footer Meta Info (Bottom Row) */}
-        <div className="absolute bottom-10 left-6 right-6 md:bottom-16 md:left-16 md:right-16 grid grid-cols-1 md:grid-cols-3 gap-6 z-20 pt-8 border-t border-slate-200/80">
-          <div className="flex flex-col gap-1 text-left">
-            <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Base</span>
-            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Bangkok, Thailand</span>
-          </div>
-          <div className="flex flex-col gap-1 text-left">
-            <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Focus</span>
-            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Full-Stack / Next.js / Go / Python</span>
-          </div>
-          <div className="flex flex-col gap-1 text-left">
-            <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Index</span>
-            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Portfolio</span>
-          </div>
-        </div>
-      </div>
 
       {/* Projects Section */}
       <div 
@@ -407,7 +336,7 @@ export default function Hero() {
       >
         <div>
           {/* Page Header */}
-          <div className="px-6 mb-6 md:px-10 flex flex-col gap-1 text-left select-none">
+          <div className="px-6 mb-6 md:px-10 flex flex-col gap-1 text-center select-none ">
             <span className="text-[15px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
               Works / Showcase
             </span>
