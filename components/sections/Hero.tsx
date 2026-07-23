@@ -322,7 +322,7 @@ export default function Hero() {
       <div className="relative h-screen w-full bg-white overflow-hidden select-none flex items-center justify-center">
         {/* Title / Name (Top Left) */}
         <div className="absolute top-10 left-6 md:top-16 md:left-16 flex flex-col gap-1 z-20 text-left">
-          <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
+          <span className="text-[15px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">
             Software Developer
           </span>
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-slate-900 leading-[0.95] uppercase">
@@ -375,7 +375,7 @@ export default function Hero() {
           </div>
           <div className="flex flex-col gap-1 text-left">
             <span className="text-[10px] md:text-xs tracking-[0.2em] text-slate-400 font-bold uppercase">Index</span>
-            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Portfolio 2026</span>
+            <span className="text-xs md:text-sm font-bold text-slate-900 uppercase">Portfolio</span>
           </div>
         </div>
       </div>
@@ -399,7 +399,7 @@ export default function Hero() {
         <div className="flex gap-3 overflow-x-auto px-6 py-4 max-full mx-auto scrollbar">
           <button
             onClick={() => setActiveTag("All")}
-            className={`flex items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
+            className={`flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
               ? "bg-black text-white border-transparent shadow-md"
               : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
               }`}
@@ -414,7 +414,7 @@ export default function Hero() {
                 key={tech}
                 onClick={() => setActiveTag(tech)}
                 className={`whitespace-nowrap rounded-xl border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${active
-                  ? "bg-black text-white border-transparent shadow-md "
+                  ? "bg-red-700 text-white border-transparent shadow-md "
                   : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
                   }`}
               >
