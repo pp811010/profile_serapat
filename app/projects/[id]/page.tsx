@@ -141,7 +141,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
 
 
         <div className="mb-10">
-          <h2 className="text-lg font-bold text-gray-900 mb-3">เกี่ยวกับโปรเจกต์</h2>
+          <h2 className="text-lg font-bold text-gray-900 mb-3">Summary</h2>
           {project.description.slice(0, 2).map((para: string, index: number) => (
             <p key={index} className="text-sm text-muted leading-relaxed mb-3">
               {para}

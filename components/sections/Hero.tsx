@@ -400,7 +400,7 @@ export default function Hero() {
           <button
             onClick={() => setActiveTag("All")}
             className={`flex cursor-pointer items-center gap-1.5 whitespace-nowrap rounded-xl border px-4 py-2 text-sm transition-all duration-200 ${activeTag === "All"
-              ? "bg-black text-white border-transparent shadow-md"
+              ? "bg-[#d4ff05] text-black border-transparent shadow-md"
               : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
               }`}
           >
@@ -414,7 +414,7 @@ export default function Hero() {
                 key={tech}
                 onClick={() => setActiveTag(tech)}
                 className={`whitespace-nowrap rounded-xl border px-4 py-2 text-sm cursor-pointer transition-all duration-200 ${active
-                  ? "bg-red-700 text-white border-transparent shadow-md "
+                  ? "bg-[#d4ff05] text-black border-transparent shadow-md "
                   : "bg-white/40 backdrop-blur-sm border-gray-200 text-gray-700 hover:bg-white/90 hover:border-gray-300 hover:text-gray-900"
                   }`}
               >
