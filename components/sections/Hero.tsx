@@ -107,7 +107,7 @@ const projectsData = [
   },
   {
     id: "proj-3",
-    title: "MuMood Review Your Vibe, Discover Your Sound",
+    title: "Music Rating Mobile Application ",
     description:
       "MuMood แพลตฟอร์ม Community แลกเปลี่ยนความคิดเห็นเกี่ยวกับเพลงได้อย่างเต้มที่",
     techs: [
@@ -194,7 +194,7 @@ const projectsData = [
   },
   {
     id: "proj-7",
-    title: "Omakase Restaurant Management System",
+    title: "POS Restaurant Management System",
     description:
       "ระบบจัดการร้านอาหาร Omakase ครอบคลุมการจองโต๊ะ การสั่งอาหาร และการบริหารภายในร้าน",
     techs: [

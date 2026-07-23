@@ -332,7 +332,7 @@ export const projectsData: Record<string, Project> = {
   // 3. MuMood
   "mumood": {
     id: "3",
-    title: "MuMood",
+    title: "Music Rating Mobile Application",
     platform: "mobile",
     subtitle: "Review Your Vibe, Discover Your Sound - แพลตฟอร์มรีวิวและค้นพบเพลง",
     author: "Serapat Ratanapachai",
@@ -854,7 +854,7 @@ export const projectsData: Record<string, Project> = {
   // 7. Omakase Gangnam
   "omakase-gangnam": {
     id: "7",
-    title: "Omakase Gangnam",
+    title: "POS Restaurant Management System (Omakase Gangnam)",
     subtitle: "ระบบจัดการและจองร้านอาหาร Omakase แบบครบวงจร",
     author: "Serapat Ratanapachai",
     duration: "6 เดือน",
@@ -938,11 +938,6 @@ export const projectsData: Record<string, Project> = {
         image: "/projects/omakase/alert.jpg",
       },
       {
-        title: "หน้า Dashboard ผู้จัดการ",
-        description: "แสดงรายการเมนูที่ต้องทำและอัพเดทสถานะ",
-        image: "/projects/omakase/manage.jpg",
-      },
-      {
         title: "หน้า จัดการเมนูในคอร์ส ของผู้จัดการ",
         description: "แสดงรายการเมนูที่ต้องทำและอัพเดทสถานะ",
         image: "/projects/omakase/manage_menu.jpg",
@@ -951,6 +946,11 @@ export const projectsData: Record<string, Project> = {
         title: "หน้า CRUD เมนู ของผู้จัดการ",
         description: "แสดงรายการเมนูที่ต้องทำและอัพเดทสถานะ",
         image: "/projects/omakase/crud.jpg",
+      },
+      {
+        title: "หน้า Dashboard ผู้จัดการ",
+        description: "แสดงรายการเมนูที่ต้องทำและอัพเดทสถานะ",
+        image: "/projects/omakase/manage.jpg",
       },
       {
         title: "หน้า User Account ในระบบของผู้จัดการ",
@@ -970,7 +970,7 @@ export const projectsData: Record<string, Project> = {
       {
         title: "หน้าพนักงานต้อนรับ Check-out ของวันนั้น",
         description: "ระบบ Check-in และชำระเงิน",
-        image: "/projects/omakase/checkout.jpg",
+        image: "/projects/omakase/checkOut.jpg",
       },
       {
         title: "หน้าจัดการเมนูที่ต้องทำของเชฟ",
