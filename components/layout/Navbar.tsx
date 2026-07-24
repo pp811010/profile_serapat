@@ -76,8 +76,8 @@ export default function Navbar() {
             Contact
           </button>
           <a
-            href="/cv_serapat_ratanapachai1.pdf"
-            download="cv_serapat_ratanapachai.pdf"
+            href="/resume_serapat_ratanapachai.pdf"
+            download="resume_serapat_ratanapachai.pdf"
             className="flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-sm font-medium text-white bg-cyan-700 hover:bg-cyan-800 transition-all duration-200 cursor-pointer shadow-[0_2px_8px_rgba(14,116,144,0.25)] ml-1"
           >
             <Download size={14} />
